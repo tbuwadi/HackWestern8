@@ -1,4 +1,7 @@
 import React from 'react';
+
+import View from '../../components/View';
+
 import '../../index.css';
 
 const ClientView = () => {
@@ -6,6 +9,9 @@ const ClientView = () => {
     <div className='container' style={{ marginTop: '50px' }}>
       <h1>Resume Revamp</h1>
       <h5>description description descriptiondescription</h5>
+      <br></br>
+      <br></br>
+      <View panelist='hi' qna='https://app.sli.do/event/1yidejwe'/>
     </div>
   );
 }
