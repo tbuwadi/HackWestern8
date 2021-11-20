@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
 
 import '../../index.css';
 import './ClientLogin.css';
@@ -15,6 +17,19 @@ const ClientLogin = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
+        const newAttendee = {
+            name: name,
+            email: email,
+            event_code: code
+        };
+        console.log(newAttendee);
+
+        let headers={
+            'Content-Type': 'application/json',
+        };
+        axios.post('http://localhost:5000/enter-event', newAttendee, headers)
+            .then(res => console.log(res.data));
+        
     }
 
     return (
@@ -27,7 +42,7 @@ const ClientLogin = () => {
                 <label for="code">Event Code</label>
                 <input name="code" type="text" value={code} onChange={onChangeCode} />
                 <br/>
-                <button onClick={onFormSubmit}>Enter Event</button>
+                <button type='submit'>Enter Event</button>
             </form>
         </div>
     )
