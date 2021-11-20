@@ -1,6 +1,11 @@
 const {MongoClient} = require('mongodb');
 const db_name = "virtual_event_app";
-const uri = `mongodb+srv://elaine:hackwestern2021@hw-2021-event-app-db.ruaew.mongodb.net/${db_name}?retryWrites=true&w=majority`;
+
+var config = require('./passwords.json');
+const db_username = config.db_username;
+const db_password = config.db_password;
+
+const uri = `mongodb+srv://${db_username}:${db_password}@hw-2021-event-app-db.ruaew.mongodb.net/${db_name}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
 
 // connect to mongodb
