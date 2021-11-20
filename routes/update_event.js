@@ -13,15 +13,16 @@ router.post('/enter-event', enterEvent, async (req, res) => {
 
 // add new attendee when they join
 async function enterEvent(req, res, next) { 
-    if (!req.params.attendee){
-        req.params.attendee = {
+    console.log(req.params);
+    if (!req.body){
+        req.body = {
             event_code: "001",
             name: "Elaine",
             email: "elaineliu7g@gmail.com",
             role: "attendee"
         }
     }
-    const response = db.performCRUD(db.addAttendee, req);
+    const response = db.performCRUD(db.addAttendee, req.body);
     if (response) {
         response.then(function(data) {  
             res.locals.attendee = data;

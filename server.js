@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 
 const cors = require('cors');
+app.use(cors());
 
 // get announcement routes
 const getAnnouncementsRoute = require('./routes/get_announcements');

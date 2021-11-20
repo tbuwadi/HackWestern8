@@ -46,8 +46,7 @@ async function createEvent(req) {
 }
 
 // add attendee to event
-async function addAttendee(req){
-    const attendee = req.params.attendee;
+async function addAttendee(attendee){
     const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: attendee.event_code }, { $push: { attendees: attendee } } );
     if (result.value) {
         console.log(`${attendee.name} joined the event`);
