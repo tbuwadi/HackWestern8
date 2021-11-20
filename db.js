@@ -1,10 +1,9 @@
-const {MongoClient} = require('mongodb');
+require('dotenv').config();
+const db_username = process.env.DB_USERNAME;
+const db_password = process.env.DB_PASSWORD;
 const db_name = "virtual_event_app";
 
-var config = require('./passwords.json');
-const db_username = config.db_username;
-const db_password = config.db_password;
-
+const {MongoClient} = require('mongodb');
 const uri = `mongodb+srv://${db_username}:${db_password}@hw-2021-event-app-db.ruaew.mongodb.net/${db_name}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
 
