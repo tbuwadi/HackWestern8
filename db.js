@@ -3,6 +3,7 @@ require('dotenv').config();
 const db_username = process.env.DB_USERNAME;
 const db_password = process.env.DB_PASSWORD;
 const db_name = process.env.DB_NAME;
+const collection = process.env.COLLECTION;
 
 const {MongoClient} = require('mongodb');
 const { response } = require('express');
@@ -11,11 +12,11 @@ const client = new MongoClient(uri);
 
 
 // connect to mongodb
-async function performCRUD(successCallback, document) {
+async function performCRUD(successCallback, req) {
     let response;
     try {
         await client.connect();
-        response = await successCallback(document);
+        response = await successCallback(req);
     } catch(e) {
         console.error(e);
     } finally {
@@ -32,56 +33,36 @@ async function listDatabases(){
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
 
-//  add event attendeees
-async function addAttendee(attendeeObject){
-    // let newAttendee = {
-    //     name: "Elaine",
-    //     email: "email@gmail.com",
-    //     role: "admin"
-    // };
-    const result = await client.db(db_name).collection("attendees").insertOne(attendeeObject);
-    console.log(`New attendee added with the following id: ${result.insertedId}`);
-}
- 
-// add announcements
-async function addAnnouncement(announcementObject){
-    // let newAnnouncement = {
-    //     body: "announcement text"
-    // };
-    const result = await client.db(db_name).collection("announcements").insertOne(announcementObject);
-    console.log(`New announcement added with the following id: ${result.insertedId}`);
-}
- 
-// add speakers
-async function addSpeaker(speakerObject){
-    // let newSpeaker = {
-    //     firstName: "Elaine",
-    //     lastName: "Liu",
-    //     linkedIn: "https://linkedin.com",
-    //     profilePhoto: profilePhoto,
-    //     bio: "a short bio"
-    // };
-    const result = await client.db(db_name).collection("speakers").insertOne(speakerObject);
-    console.log(`New announcement added with the following id: ${result.insertedId}`);
+// create event and add to db
+async function createEvent(req) {
+    const newEvent = req.params.event_details;
+    const result = await client.db(db_name).collection(collection).insertOne(newEvent);
+    if (result.value) {
+        console.log(`New event added with the following id: ${result.insertedId}`);
+    } else {
+        console.log(`Event creation failed`);
+    }
+    return newEvent;
 }
 
-// add virtualBackgrounds
-async function addVirtualBackground(backgroundObject){   
-    // let newVirtualBackground = {
-    //     title: title,
-    //     description: description,
-    //     image: image,
-    //     link: link
-    // };
-    const result = await client.db(db_name).collection("virtualBackgrounds").insertOne(backgroundObject);
-    console.log(`New virtual background added with the following id: ${result.insertedId}`);
+// add attendee to event
+async function addAttendee(req){
+    const attendee = req.params.attendee;
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: attendee.event_code }, { $push: { attendees: attendee } } );
+    if (result.value) {
+        console.log(`${attendee.name} joined the event`);
+    } else {
+        console.log(`${attendee.name} could not join the event`);
+    }
+    return attendee;
 }
 
 // get attendees from database
-async function getAttendees(){
-    const response = await client.db(db_name).collection("attendees").find({}).toArray();
-    return response;
+async function getAttendees(req){
+    const response = await client.db(db_name).collection("events").find({ event_code: req.params.event_code }).toArray();
+    return response[0].attendees;
 }
+
 
 // get announcements from database
 async function getAnnouncements(){
@@ -103,13 +84,56 @@ async function getVirtualBackgrounds(){
 
 module.exports = {
     performCRUD,
-    listDatabases,
+    createEvent,
     addAttendee,
-    addAnnouncement,
-    addSpeaker,
-    addVirtualBackground,
+    listDatabases,
     getAttendees,
     getAnnouncements,
     getSpeakers,
     getVirtualBackgrounds
 };
+
+//  add event attendeees
+// async function addAttendee(attendeeObject){
+//     // let newAttendee = {
+//     //     name: "Elaine",
+//     //     email: "email@gmail.com",
+//     //     role: "admin"
+//     // };
+//     const result = await client.db(db_name).collection("attendees").insertOne(attendeeObject);
+//     console.log(`New attendee added with the following id: ${result.insertedId}`);
+// }
+ 
+// // add announcements
+// async function addAnnouncement(announcementObject){
+//     // let newAnnouncement = {
+//     //     body: "announcement text"
+//     // };
+//     const result = await client.db(db_name).collection("announcements").insertOne(announcementObject);
+//     console.log(`New announcement added with the following id: ${result.insertedId}`);
+// }
+ 
+// // add speakers
+// async function addSpeaker(speakerObject){
+//     // let newSpeaker = {
+//     //     firstName: "Elaine",
+//     //     lastName: "Liu",
+//     //     linkedIn: "https://linkedin.com",
+//     //     profilePhoto: profilePhoto,
+//     //     bio: "a short bio"
+//     // };
+//     const result = await client.db(db_name).collection("speakers").insertOne(speakerObject);
+//     console.log(`New announcement added with the following id: ${result.insertedId}`);
+// }
+
+// // add virtualBackgrounds
+// async function addVirtualBackground(backgroundObject){   
+//     // let newVirtualBackground = {
+//     //     title: title,
+//     //     description: description,
+//     //     image: image,
+//     //     link: link
+//     // };
+//     const result = await client.db(db_name).collection("virtualBackgrounds").insertOne(backgroundObject);
+//     console.log(`New virtual background added with the following id: ${result.insertedId}`);
+// }
