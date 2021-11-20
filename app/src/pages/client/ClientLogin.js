@@ -27,7 +27,7 @@ const ClientLogin = () => {
         let headers={
             'Content-Type': 'application/json',
         };
-        axios.post('http://localhost:5000/enter-event', newAttendee, headers)
+        axios.post(`http://localhost:5000/enter-event/${name}/${email}/${code}`)
             .then(res => console.log(res.data));
         
     }
