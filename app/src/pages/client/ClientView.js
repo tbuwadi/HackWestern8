@@ -10,8 +10,7 @@ const ClientView = () => {
       <h1>Resume Revamp</h1>
       <h5>description description descriptiondescription</h5>
       <br></br>
-      <br></br>
-      <View panelist='hi' qna='https://app.sli.do/event/1yidejwe'/>
+      <View speaker='hi' qna='https://app.sli.do/event/1yidejwe'/>
     </div>
   );
 }
