@@ -31,6 +31,9 @@ async function getAttendees(req, res, next) {
     }
 }
 
+async function sendEmail(req, res, next) {
+    
+
 // function to get list of speakers
 // async function getSpeakers(req, res, next) {
 //     const response = db.performCRUD(db.getSpeakers);

@@ -9,25 +9,15 @@ const eventSchema = new Schema({
         unique: true,
         trim: true,
     },
-
-    title: {
-        type: String,
-    },
-    slide: {
-        type: String,
-    },
-    qa: {
-        type: String,
-    },
-    spotify: {
-        type: String,
-    },
-    zoom: {
-        type: Array,
-    },
-    title: {
-        type: String,
-    },
+    title: String, // String is shorthand for {type: String}
+    slide: String,
+    qa: String,
+    spotify: String,
+    backgrounds: [{ image: String }],
+    attendees: [{ name: String, email: String, role: String }],
+    speakers: [{ firstName: String, lastName: String, email: String, role: String, bio: String, website: String, image: String }],
+    post_event: String,
+    notifs: [{ msg: String }]
 }, {
     timestamps: true,
 });
