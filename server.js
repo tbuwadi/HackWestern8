@@ -9,9 +9,26 @@ const cors = require('cors');
 const announcementRoutes = require('./routes/announcements');
 app.use(announcementRoutes); 
 
-// get post_event routes
-const postEventRoutes = require('./routes/post_event');
-app.use(postEventRoutes);
+// get after_event routes
+const afterEventRoutes = require('./routes/after_event');
+app.use(afterEventRoutes);
+
+// get create_event routes
+const createEventRoutes = require('./routes/create_event');
+app.use(createEventRoutes);
+
+// get read event routes
+const readEvent = require('./routes/read_event');
+app.use(readEvent);
+
+// get update_event routes
+const updateEvent = require('./routes/update_event');
+app.use(updateEvent);
+
+// get delete event resources routes
+const deleteResources = require('./routes/delete_resources');
+app.use(deleteResources);
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
