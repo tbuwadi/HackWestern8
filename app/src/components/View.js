@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Carousel } from '3d-react-carousal';
 import './View.css';
 
 const View = (props) => {
     const { qna, speakers, zoom } = props;
     const [state, setState] = useState('qna');
-    console.log(state);
+    
+    const zoomImage = zoom.map(item => { return <img  src={item} /> });
 
     const onQnAClick = (e) => { setState('qna') }
     const onSpeakerClick = (e) => { setState('speaker') }
@@ -24,7 +26,7 @@ const View = (props) => {
                 : state === 'speaker' ?
                     <p>NOTHING RIGHT NOW :(</p>
                 : state === 'zoom' ?
-                    <p>Zoom</p>
+                    <Carousel slides={ zoomImage } autoplay={ false }/>
                 : null}
             </div>
 
