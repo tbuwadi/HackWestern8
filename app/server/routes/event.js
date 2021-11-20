@@ -11,8 +11,8 @@ router.route('/').get((req, res) => {
 
 // handling the post request
 router.route('/add-event-code').post((req, res) => {
-    const event_code = req.body.event_code; // user name is part of the request body
-    const newEvent = new Event({event_code});
+    const _id = req.body._id; // user name is part of the request body
+    const newEvent = new Event({_id});
 
     // save new username to the mongodb database
     newEvent.save()

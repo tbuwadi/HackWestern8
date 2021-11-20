@@ -9,6 +9,8 @@ const {MongoClient} = require('mongodb');
 const { response } = require('express');
 const uri = `mongodb+srv://${db_username}:${db_password}@hw-2021-event-app-db.ruaew.mongodb.net/${db_name}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
+var ObjectId = require('mongodb').ObjectID;
+const { ObjectID } = require('bson');
 
 
 // connect to mongodb
@@ -48,7 +50,7 @@ async function createEvent(req) {
 // add attendee to event
 async function addAttendee(req){
     const attendee = req.params;
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: attendee.event_code }, { $push: { attendees: attendee } } );
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(attendee._id) }, { $push: { attendees: attendee } } );
     if (result.value) {
         console.log(`${attendee.name} joined the event`);
     } else {
@@ -59,7 +61,7 @@ async function addAttendee(req){
 
 // add announcement
 async function addAnnouncement(announcementObject){
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: announcementObject.event_code }, { $push: { announcements: announcementObject } } );
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(announcementObject._id) }, { $push: { announcements: announcementObject } } );
     if (result.value) {
         console.log(`${announcementObject.title} added to announcements`);
     } else {
@@ -76,21 +78,21 @@ async function getAnnouncements(req){
 
 // get attendees from database
 async function getAttendees(req){
-    const response = await client.db(db_name).collection("events").find({ event_code: req.params.event_code }).toArray();
+    const response = await client.db(db_name).collection("events").find({ _id: ObjectID(req.params._id) }).toArray();
     return response[0].attendees;
 }
 
 
 // get speakers from database
 async function getSpeakers(req){
-    const response = await client.db(db_name).collection("events").find({event_code: req.params.event_code}).toArray();
+    const response = await client.db(db_name).collection("events").find({_id: ObjectID(req.params._id)}).toArray();
     return response[0].speakers;
 }
 
 // add speakers
 async function addSpeaker(req){
     const speaker = req.params.speaker;
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: speaker.event_code }, { $push: { speakers: speaker } } );
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(speaker._id) }, { $push: { speakers: speaker } } );
     if (result.value) {
         console.log(`${speaker.firstName} added to event info`);
     } else {
@@ -102,7 +104,7 @@ async function addSpeaker(req){
 // add slides
 async function updateSlides(req){
     const slides = req.params.slides;
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: slides.event_code }, { $set: { slides: slides } } );
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(slides._id) }, { $set: { slides: slides } } );
     if (result.value) {
         console.log(`${slides.title} added to event`);
     } else {
@@ -114,7 +116,7 @@ async function updateSlides(req){
 // update playlist
 async function updatePlaylist(req){
     const playlist = req.params.playlist;
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: playlist.event_code }, { $set: { playlist: playlist } } );
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(playlist._id) }, { $set: { playlist: playlist } } );
     if (result.value) {
         console.log(`${playlist.title} added to event`);
     } else {
@@ -125,20 +127,20 @@ async function updatePlaylist(req){
 
 // get playlist url from database
 async function getPlaylist(req){
-    const response = await client.db(db_name).collection("events").find({event_code: req.params.event_code}).toArray();
+    const response = await client.db(db_name).collection("events").find({_id: ObjectID(req.params._id) }).toArray();
     return response[0].playlist;
 }
 
 //get slides url from database
 async function getSlides(req){
-    const response = await client.db(db_name).collection("events").find({event_code: req.params.event_code}).toArray();
+    const response = await client.db(db_name).collection("events").find({_id: ObjectID(req.params._id) }).toArray();
     return response[0].slides;
 }
 
 // delete speaker from database
 async function deleteSpeaker(req){
     const speaker = req.params.speaker;
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: speaker.event_code }, { $pull: { speakers: { firstName: speaker.firstName } } } );
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(speaker._id }, { $pull: { speakers: { firstName: speaker.firstName } } } );
     if (result.value) {
         console.log(`${speaker.firstName} removed from event`);
     } else {

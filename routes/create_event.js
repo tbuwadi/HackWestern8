@@ -7,14 +7,13 @@ const router = express.Router();
 const db = require("../db");
 
 // route to create event
-router.put('/create-event', createEvent, async (req, res) => {
+router.put('/create-event/:_id/:title', createEvent, async (req, res) => {
 	res.send(res.locals.event);
 });
 
 async function createEvent(req, res, next) { 
     if (!req.params.event_details) {
         req.params.event_details = {
-            event_code: "001",
             title: "Hack Western"
         };
     }

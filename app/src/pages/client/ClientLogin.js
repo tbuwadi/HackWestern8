@@ -20,7 +20,7 @@ const ClientLogin = () => {
         const newAttendee = {
             name: name,
             email: email,
-            event_code: code
+            _id: code
         };
         console.log(newAttendee);
 

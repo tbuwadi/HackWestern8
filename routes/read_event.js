@@ -7,13 +7,13 @@ const router = express.Router();
 const db = require("../db");
 
 // route to get speakers
-router.get('/get-speakers', getSpeakers, async (req, res) => {
+router.get('/get-speakers/:_id', getSpeakers, async (req, res) => {
 	res.send(res.locals.speakers);
 });
 
 async function getSpeakers(req, res, next) { 
-    if (!req.params.event_code) {
-        req.params.event_code = "001";
+    if (!req.params._id) {
+        req.params._id = "6199244fc8af6bc5ec2ff583";
     }
     const response = db.performCRUD(db.getSpeakers, req);
     if (response) {
@@ -28,13 +28,13 @@ async function getSpeakers(req, res, next) {
 }
 
 // route to get playlist
-router.get('/get-playlist', getPlaylist, async (req, res) => {
+router.get('/get-playlist/:_id', getPlaylist, async (req, res) => {
     res.send(res.locals.playlist);
 });
 
 async function getPlaylist(req, res, next) {
-    if (!req.params.event_code) {
-        req.params.event_code = "001";
+    if (!req.params._id) {
+        req.params._id = "6199244fc8af6bc5ec2ff583";
     }
     const response = db.performCRUD(db.getPlaylist, req);
     if (response) {
@@ -49,12 +49,12 @@ async function getPlaylist(req, res, next) {
 }
 
 // route to get slides
-router.get('/get-slides', getSlides, async (req, res) => {
+router.get('/get-slides/:_id', getSlides, async (req, res) => {
     res.send(res.locals.slides);
 });
 async function getSlides(req, res, next) {
-    if (!req.params.event_code) {
-        req.params.event_code = "001";
+    if (!req.params._id) {
+        req.params._id = "6199244fc8af6bc5ec2ff583";
     }
     const response = db.performCRUD(db.getSlides, req);
     if (response) {

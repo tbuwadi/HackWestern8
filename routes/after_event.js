@@ -14,8 +14,8 @@ sendGridMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 // TODO: send different emails to different users
 function getAttendees(req, res) { 
-    if (!req.params.event_code) {
-        req.params.event_code = "001";
+    if (!req.params._id) {
+        req.params._id = "6199244fc8af6bc5ec2ff583";
     }
     const response = db.performCRUD(db.getAttendees, req);
     return response;
@@ -58,8 +58,8 @@ async function sendEmail(req, res, next) {
 }
 
 // async function getEmail(req, res, next) { 
-//     if (!req.params.event_code) {
-//         req.params.event_code = "001";
+//     if (!req.params._id) {
+//         req.params._id = "6199244fc8af6bc5ec2ff583";
 //     }
 //     const response = db.performCRUD(db.getEmail, req);
 //     console.log(response);

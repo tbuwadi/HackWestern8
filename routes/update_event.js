@@ -7,7 +7,7 @@ const router = express.Router();
 const db = require("../db");
 
 // add new attendee when they join
-router.post('/enter-event/:name/:email/:event_code', enterEvent, async (req, res) => {
+router.post('/enter-event/:name/:email/:_id', enterEvent, async (req, res) => {
 	res.send(res.locals.attendee);
 });
 
@@ -15,7 +15,7 @@ router.post('/enter-event/:name/:email/:event_code', enterEvent, async (req, res
 async function enterEvent(req, res, next) { 
     if (!req.params){
         req.params = {
-            event_code: "001",
+            _id: "6199244fc8af6bc5ec2ff583",
             name: "Elaine",
             email: "elaineliu7g@gmail.com",
             role: "attendee"
@@ -36,14 +36,14 @@ async function enterEvent(req, res, next) {
 
 
 // route to add speaker bio
-router.post('/add-speaker', addSpeaker, async (req, res) => {
+router.post('/add-speaker/:_id/:firstName/:lastName/:email/:bio/:website', addSpeaker, async (req, res) => {
 	res.send(res.locals.speaker);
 });
 
 async function addSpeaker(req, res, next) { 
     if (!req.params.speaker) {
         req.params.speaker = {
-            event_code: "001",
+            _id: "6199244fc8af6bc5ec2ff583",
             firstName: "Elaine",
             lastName: "Liu",
             email: "elaineliu7g@gmail.com",
@@ -64,14 +64,14 @@ async function addSpeaker(req, res, next) {
 }
 
 // route to update slides url
-router.get('/update-slides', updateSlides, async (req, res) => {
+router.get('/update-slides/:_id/:title/:url', updateSlides, async (req, res) => {
 	res.send(res.locals.slides);
 });
 
 async function updateSlides(req, res, next) {
     if (!req.params.slides) {
         req.params.slides = {
-            event_code: "001",
+            _id: "6199244fc8af6bc5ec2ff583",
             title: "Elaine's slides",
             url: "https://eliu72.github.io/",
         }
@@ -89,14 +89,14 @@ async function updateSlides(req, res, next) {
 }
 
 // route to update playlist url
-router.post('/update-playlist', updatePlaylist, async (req, res) => {
+router.post('/update-playlist/:_id/:title/:url', updatePlaylist, async (req, res) => {
     res.send(res.locals.playlist);
 });
 
 async function updatePlaylist(req, res, next) {
     if (!req.params.playlist) {
         req.params.playlist = {
-            event_code: "001",
+            _id: "6199244fc8af6bc5ec2ff583",
             title: "Elaine's playlist",
             url: "https://eliu72.github.io/",
         }

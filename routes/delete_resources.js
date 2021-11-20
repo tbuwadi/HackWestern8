@@ -7,14 +7,14 @@ const router = express.Router();
 const db = require("../db");
 
 // route to create event
-router.delete('/delete-speaker', deleteSpeaker, async (req, res) => {
+router.delete('/delete-speaker/:_id/:firstName/:lastName', deleteSpeaker, async (req, res) => {
 	res.send(res.locals.speaker);
 });
 
 async function deleteSpeaker(req, res, next) { 
     if (!req.params.speaker) {
         req.params.speaker = {
-            event_code: "001",
+            _id: "6199244fc8af6bc5ec2ff583",
             firstName: "Elaine",
             lastName: "Liu",
         };
