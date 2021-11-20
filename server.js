@@ -6,8 +6,11 @@ const app = express();
 const cors = require('cors');
 
 // get announcement routes
-const announcementRoutes = require('./routes/announcements');
-app.use(announcementRoutes); 
+const getAnnouncementsRoute = require('./routes/get_announcements');
+app.use(getAnnouncementsRoute); 
+
+const postAnnouncementRoute = require('./routes/post_announcement');
+app.use(postAnnouncementRoute); 
 
 // get post_event routes
 const postEventRoutes = require('./routes/post_event');

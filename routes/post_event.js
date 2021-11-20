@@ -32,7 +32,9 @@ async function getAttendees(req, res, next) {
 }
 
 async function sendEmail(req, res, next) {
-    
+}
+
+module.exports = router;
 
 // function to get list of speakers
 // async function getSpeakers(req, res, next) {
@@ -45,8 +47,6 @@ async function sendEmail(req, res, next) {
 //         res.send('Could not get speakers list');
 //     }
 // }
-
-module.exports = router;
 
 // function getMessage(body) {
 //     const body = body;
