@@ -68,6 +68,12 @@ async function addAnnouncement(announcementObject){
     return announcementObject;
 }
 
+// get announcements
+async function getAnnouncements(req){
+    const response = await client.db(db_name).collection("events").find().toArray();
+    return response[0].announcements;
+}
+
 // get attendees from database
 async function getAttendees(req){
     const response = await client.db(db_name).collection("events").find({ event_code: req.params.event_code }).toArray();
@@ -151,6 +157,7 @@ module.exports = {
     updateSlides,
     updatePlaylist,
     listDatabases,
+    getAnnouncements,
     getAttendees,
     getSpeakers,
     getPlaylist,

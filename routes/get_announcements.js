@@ -11,9 +11,10 @@ async function getAnnouncements(req, res, next) {
     const response = db.performCRUD(db.getAnnouncements);
     if (response) {
         response.then(function(data) {  
+            console.log(data);
             res.locals.announcements = data;
+            next();
         });
-        next();
     }
     else {
         res.send({ error: "Could not get announcements" });

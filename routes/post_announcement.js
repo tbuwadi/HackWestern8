@@ -3,7 +3,7 @@ const router = express.Router();
 
 const db = require("../db");
 
-router.post('/postannouncement/:title/:content', postAnnouncement, async (req, res, next) => {
+router.post('/postannouncement/:title/:content/:event_code?', postAnnouncement, async (req, res, next) => {
     console.log(req.params.title)
 	res.send(res.locals.newannouncement)
 });
