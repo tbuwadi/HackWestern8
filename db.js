@@ -79,4 +79,4 @@ let newAttendee = {
     role: "admin"
 };
 
-performCRUD(addAttendee, newAttendee).catch(console.error);
+// performCRUD(addAttendee, newAttendee).catch(console.error);
