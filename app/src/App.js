@@ -6,6 +6,9 @@ import AdminSettings from './pages/admin/AdminSettings';
 import ClientView from './pages/client/ClientView';
 import ClientLogin from './pages/client/ClientLogin';
 
+// testing apps
+import Notification from './components/Notification';
+
  
 class App extends Component {
   render() {
@@ -19,6 +22,8 @@ class App extends Component {
              <Route path="/clientview" element={<ClientView/>}/>
              <Route path="/clientlogin" element={<ClientLogin/>}/>
            </Routes>
+
+           <Notification text="join the zoom meeting right now and now and naow andsjfs "/>
         </div> 
       </BrowserRouter>
     );
