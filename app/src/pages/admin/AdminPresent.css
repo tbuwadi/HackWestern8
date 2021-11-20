@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body{
+    margin: 30px;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+.tabBtn{
+    background-color: #BFE5D7;
+    border-radius: 30px;
+    margin: 10px;
+    font-weight: bold;
+}
+.spotify{
+    float: right;
+    border-radius: 15px;
+}
+.slidesWrapper{
+    margin-top: 50px;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
