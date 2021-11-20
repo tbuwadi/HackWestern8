@@ -18,7 +18,7 @@ const ClientLogin = () => {
     }
 
     return (
-        <div className='text-center form-box' style={{ backgroundColor: '#BFE5D7'}}>
+        <div className='text-center form-box'>
             <form onSubmit={onFormSubmit}>
                 <label for="name">Full Name</label>
                 <input name="name" type="text" value={name} onChange={onChangeName} />
