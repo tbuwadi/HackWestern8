@@ -14,7 +14,7 @@ const View = (props) => {
         <div className='view-component'>
             <div>
                 <button onClick={onQnAClick}>Q & A</button>
-                <button onClick={onSpeakerClick}>Panelists</button>
+                <button onClick={onSpeakerClick}>Speakers</button>
                 <button onClick={onZoomClick}>Zoom backgrounds</button>
             </div>
             <br></br>
