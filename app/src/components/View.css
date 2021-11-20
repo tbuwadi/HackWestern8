@@ -1,0 +1,10 @@
+.view-component button {
+    font-size: medium;
+    color: #4d4d4d;
+    border: none;
+    width: Auto;
+    height: 30px;
+    border-radius: 10px;
+    margin-right: 5px;
+    background-color: rgba(191,229,215);
+}
