@@ -8,6 +8,15 @@ router.get('/testing', tester, async (req, res) => {
 	res.send(res.locals.iss);
 });
 
+// router.post('/addannouncement', tester, async (req, res) => {
+// 	let announcement = {
+// 		name: req.body.name,
+// 		content: req.body.content
+// 	}
+
+// 	db.performCRUD()
+// });
+
 async function tester(req, res, next) { 
 	const response = await axios.get('http://api.open-notify.org/iss-now.json', { 
 		// params: {
