@@ -21,13 +21,13 @@ const View = (props) => {
             </div>
             <br></br>
             <div>
-                {state === 'qna' ? 
+                { state === 'qna' ? 
                     <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px', borderRadius: '15px'}} title="Slido"></iframe>
                 : state === 'speaker' ?
                     <p>NOTHING RIGHT NOW :(</p>
                 : state === 'zoom' ?
                     <Carousel slides={ zoomImage } autoplay={ false }/>
-                : null}
+                : null }
             </div>
 
         </div>
