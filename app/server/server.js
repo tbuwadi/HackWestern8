@@ -28,11 +28,9 @@ connection.once('open', () => {
 
 const eventRouter = require('./routes/event');
 
-app.use('/event', exercisesRouter);
+app.use('/event', eventRouter);
 
 // listen to the server
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
-});  getSpeakers,
-    getVirtualBackgrounds
-};
+});

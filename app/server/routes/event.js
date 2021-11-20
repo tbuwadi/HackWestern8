@@ -1,5 +1,5 @@
 const router = require('express').Router();  //create router
-let User = require('../models/event.model');  // use mongoose models
+let User = require('../model/event.model');  // use mongoose models
 
 
 // handling the get request
