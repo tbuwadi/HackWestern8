@@ -1,5 +1,5 @@
 const router = require('express').Router();  //create router
-let User = require('../models/event.model');  // use mongoose models
+let User = require('../model/event.model');  // use mongoose models
 
 
 // handling the get request
@@ -19,42 +19,6 @@ router.route('/add-event-code').post((req, res) => {
         .then(() => res.json('User added!'))
         .catch(err => res.status(400).json('Error ' + err));
 });
-
-// handling the post request
-router.route('/add-attendee').post((req, res) => {
-    const username = req.body.username; // user name is part of the request body
-    const newUser = new User({username});
-
-    // save new username to the mongodb database
-    newUser.save()
-        .then(() => res.json('User added!'))
-        .catch(err => res.status(400).json('Error ' + err));
-});
-
-
-// handling the post request
-router.route('/add-attendee').post((req, res) => {
-    const username = req.body.username; // user name is part of the request body
-    const newUser = new User({username});
-
-    // save new username to the mongodb database
-    newUser.save()
-        .then(() => res.json('User added!'))
-        .catch(err => res.status(400).json('Error ' + err));
-});
-
-
-// handling the post request
-router.route('/add-attendee').post((req, res) => {
-    const username = req.body.username; // user name is part of the request body
-    const newUser = new User({username});
-
-    // save new username to the mongodb database
-    newUser.save()
-        .then(() => res.json('User added!'))
-        .catch(err => res.status(400).json('Error ' + err));
-});
-
 
 // handling the post request
 router.route('/add-attendee').post((req, res) => {
