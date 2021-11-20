@@ -5,6 +5,9 @@ const app = express();
 
 const cors = require('cors');
 
+const announcementRoutes = require('./routes/announcements');
+app.use(announcementRoutes); 
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 }); 
