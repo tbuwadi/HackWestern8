@@ -3,7 +3,7 @@ import { Carousel } from '3d-react-carousal';
 import './View.css';
 
 const View = (props) => {
-    const { qna, speakers, zoom } = props;
+    const { qna, speaker, zoom } = props;
     const [state, setState] = useState('qna');
     
     const zoomImage = zoom.map(item => { return <img  src={item} /> });
@@ -24,7 +24,14 @@ const View = (props) => {
                 { state === 'qna' ? 
                     <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px', borderRadius: '15px'}} title="Slido"></iframe>
                 : state === 'speaker' ?
-                    <p>NOTHING RIGHT NOW :(</p>
+                    speaker.map(item => {
+                        return (
+                            <div>
+                                <h5 style={{ fontWeight: 'bold' }}>{item.firstName} {item.lastName}</h5>
+                                <p>{item.bio}</p>
+                            </div>
+                        )
+                    })
                 : state === 'zoom' ?
                     <Carousel slides={ zoomImage } autoplay={ false }/>
                 : null }

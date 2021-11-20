@@ -5,18 +5,36 @@ import View from '../../components/View';
 import '../../index.css';
 
 const ClientView = () => {
-  const data = [
+  const zoombg = [
     "https://raw.githubusercontent.com/tbuwadi/HackWestern8/main/wits-bg/img1.b600c14a.png?token=AHYMZK3OEJ6P3PZJ6MQ2OBDBUKDRS",
     "https://raw.githubusercontent.com/tbuwadi/HackWestern8/main/wits-bg/img2.9f130068.png?token=AHYMZK67N5TFAEOEALAAFADBUKDR6",
     "https://raw.githubusercontent.com/tbuwadi/HackWestern8/main/wits-bg/img3.a5180e90.png?token=AHYMZKZJZQ4RSA6CYKHQPJTBUKDSI",
   ];
+
+  const speakers = [
+    {
+      "firstName": "John",
+      "lastName": "Smith",
+      "bio": "swe @ hiremeanywhere"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Smith",
+      "bio": "@John's brother"
+    },
+    {
+      "firstName": "Jim",
+      "lastName": "Tim",
+      "bio": "@John's cousin"
+    }
+  ]
   
   return (
     <div className='container' style={{ marginTop: '50px' }}>
       <h1>Resume Revamp</h1>
       <h5>description description descriptiondescription</h5>
       <br></br>
-      <View speaker='hi' qna='https://app.sli.do/event/1yidejwe' zoom={data}/>
+      <View speaker={speakers} qna='https://app.sli.do/event/1yidejwe' zoom={zoombg}/>
     </div>
   );
 }
