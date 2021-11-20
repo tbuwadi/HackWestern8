@@ -57,6 +57,17 @@ async function addAttendee(req){
     return attendee;
 }
 
+// add announcement
+async function addAnnouncement(announcementObject){
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: announcementObject.event_code }, { $push: { announcements: announcementObject } } );
+    if (result.value) {
+        console.log(`${announcementObject.title} added to announcements`);
+    } else {
+        console.log(`${announcementObject.title} announcement failed to be added`);
+    }
+    return announcementObject;
+}
+
 // get attendees from database
 async function getAttendees(req){
     const response = await client.db(db_name).collection("events").find({ event_code: req.params.event_code }).toArray();
@@ -135,6 +146,7 @@ module.exports = {
     performCRUD,
     createEvent,
     addAttendee,
+    addAnnouncement,
     addSpeaker,
     updateSlides,
     updatePlaylist,
