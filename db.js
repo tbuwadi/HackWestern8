@@ -1,21 +1,34 @@
+// router
+const express = require('express');
+const axios = require('axios');
+const router = express.Router();
+
+// get env variables
 require('dotenv').config();
 const db_username = process.env.DB_USERNAME;
 const db_password = process.env.DB_PASSWORD;
-const db_name = "virtual_event_app";
+const db_name = process.env.DB_NAME;
 
 const {MongoClient} = require('mongodb');
+const { response } = require('express');
 const uri = `mongodb+srv://${db_username}:${db_password}@hw-2021-event-app-db.ruaew.mongodb.net/${db_name}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
 
+router.get('/perform-crud', performCRUD, async (req, res) => {
+	res.send(res.locals.dbResponse);
+});
+
 // connect to mongodb
 async function performCRUD(successCallback, document) {
+    let response;
     try {
         await client.connect();
-        await successCallback(document);
+        response = await successCallback(document);
     } catch(e) {
         console.error(e);
     } finally {
         await client.close();
+        return response;
     }
 }
 
@@ -72,11 +85,39 @@ async function addVirtualBackground(backgroundObject){
     console.log(`New virtual background added with the following id: ${result.insertedId}`);
 }
 
-// in react, store info in an object and pass it to this function
-let newAttendee = {
-    name: "Elaine",
-    email: "elaineliu7g@gmail.com",
-    role: "admin"
-};
+// get attendees from database
+async function getAttendees(){
+    const response = await client.db(db_name).collection("attendees").find({}).toArray();
+    return response;
+}
 
-// performCRUD(addAttendee, newAttendee).catch(console.error);
+// get announcements from database
+async function getAnnouncements(){
+    const response = await client.db(db_name).collection("announcements").find({}).toArray();
+    return response;
+}
+
+// get speakers from database
+async function getSpeakers(){
+    const response = await client.db(db_name).collection("speakers").find({}).toArray();
+    return response;
+}
+
+// get virtualBackgrounds from database
+async function getVirtualBackgrounds(){
+    const response = await client.db(db_name).collection("virtualBackgrounds").find({}).toArray();
+    return response;
+}
+
+module.exports = {
+    performCRUD,
+    listDatabases,
+    addAttendee,
+    addAnnouncement,
+    addSpeaker,
+    addVirtualBackground,
+    getAttendees,
+    getAnnouncements,
+    getSpeakers,
+    getVirtualBackgrounds
+};
