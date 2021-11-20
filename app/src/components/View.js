@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './View.css';
 
 const View = (props) => {
-    const { qna, speakers } = props;
+    const { qna, speakers, zoom } = props;
     const [state, setState] = useState('qna');
     console.log(state);
 
@@ -20,10 +20,12 @@ const View = (props) => {
             <br></br>
             <div>
                 {state === 'qna' ? 
-                    <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px' }} title="Slido"></iframe> : 
-                state === 'speaker' ?
-                    <p>NOTHING RIGHT NOW :(</p> :
-                null}
+                    <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px', borderRadius: '15px'}} title="Slido"></iframe>
+                : state === 'speaker' ?
+                    <p>NOTHING RIGHT NOW :(</p>
+                : state === 'zoom' ?
+                    <p>Zoom</p>
+                : null}
             </div>
 
         </div>
