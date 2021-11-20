@@ -7,7 +7,7 @@ const router = express.Router();
 const db = require("../db");
 
 // route to create event
-router.get('/create-event', createEvent, async (req, res) => {
+router.put('/create-event', createEvent, async (req, res) => {
 	res.send(res.locals.event);
 });
 

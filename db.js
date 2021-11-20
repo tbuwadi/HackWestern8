@@ -64,76 +64,84 @@ async function getAttendees(req){
 }
 
 
-// get announcements from database
-async function getAnnouncements(){
-    const response = await client.db(db_name).collection("announcements").find({}).toArray();
-    return response;
-}
-
 // get speakers from database
-async function getSpeakers(){
-    const response = await client.db(db_name).collection("speakers").find({}).toArray();
-    return response;
+async function getSpeakers(req){
+    const response = await client.db(db_name).collection("events").find({event_code: req.params.event_code}).toArray();
+    return response[0].speakers;
 }
 
-// get virtualBackgrounds from database
-async function getVirtualBackgrounds(){
-    const response = await client.db(db_name).collection("virtualBackgrounds").find({}).toArray();
-    return response;
+// add speakers
+async function addSpeaker(req){
+    const speaker = req.params.speaker;
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: speaker.event_code }, { $push: { speakers: speaker } } );
+    if (result.value) {
+        console.log(`${speaker.firstName} added to event info`);
+    } else {
+        console.log(`${speaker.firstName} failed to be added`);
+    }
+    return speaker;
 }
+
+// add slides
+async function updateSlides(req){
+    const slides = req.params.slides;
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: slides.event_code }, { $set: { slides: slides } } );
+    if (result.value) {
+        console.log(`${slides.title} added to event`);
+    } else {
+        console.log(`${slides.title} failed to be added`);
+    }
+    return slides;
+}
+
+// update playlist
+async function updatePlaylist(req){
+    const playlist = req.params.playlist;
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: playlist.event_code }, { $set: { playlist: playlist } } );
+    if (result.value) {
+        console.log(`${playlist.title} added to event`);
+    } else {
+        console.log(`${playlist.title} failed to be added`);
+    }
+    return playlist;
+}
+
+// get playlist url from database
+async function getPlaylist(req){
+    const response = await client.db(db_name).collection("events").find({event_code: req.params.event_code}).toArray();
+    return response[0].playlist;
+}
+
+//get slides url from database
+async function getSlides(req){
+    const response = await client.db(db_name).collection("events").find({event_code: req.params.event_code}).toArray();
+    return response[0].slides;
+}
+
+// delete speaker from database
+async function deleteSpeaker(req){
+    const speaker = req.params.speaker;
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { event_code: speaker.event_code }, { $pull: { speakers: { firstName: speaker.firstName } } } );
+    if (result.value) {
+        console.log(`${speaker.firstName} removed from event`);
+    } else {
+        console.log(`${speaker.firstName} failed to be removed`);
+    }
+    return speaker;
+}
+
 
 module.exports = {
     performCRUD,
     createEvent,
     addAttendee,
+    addSpeaker,
+    updateSlides,
+    updatePlaylist,
     listDatabases,
     getAttendees,
-    getAnnouncements,
     getSpeakers,
-    getVirtualBackgrounds
+    getPlaylist,
+    getSlides,
+    deleteSpeaker,
 };
-
-//  add event attendeees
-// async function addAttendee(attendeeObject){
-//     // let newAttendee = {
-//     //     name: "Elaine",
-//     //     email: "email@gmail.com",
-//     //     role: "admin"
-//     // };
-//     const result = await client.db(db_name).collection("attendees").insertOne(attendeeObject);
-//     console.log(`New attendee added with the following id: ${result.insertedId}`);
-// }
- 
-// // add announcements
-// async function addAnnouncement(announcementObject){
-//     // let newAnnouncement = {
-//     //     body: "announcement text"
-//     // };
-//     const result = await client.db(db_name).collection("announcements").insertOne(announcementObject);
-//     console.log(`New announcement added with the following id: ${result.insertedId}`);
-// }
- 
-// // add speakers
-// async function addSpeaker(speakerObject){
-//     // let newSpeaker = {
-//     //     firstName: "Elaine",
-//     //     lastName: "Liu",
-//     //     linkedIn: "https://linkedin.com",
-//     //     profilePhoto: profilePhoto,
-//     //     bio: "a short bio"
-//     // };
-//     const result = await client.db(db_name).collection("speakers").insertOne(speakerObject);
-//     console.log(`New announcement added with the following id: ${result.insertedId}`);
-// }
-
-// // add virtualBackgrounds
-// async function addVirtualBackground(backgroundObject){   
-//     // let newVirtualBackground = {
-//     //     title: title,
-//     //     description: description,
-//     //     image: image,
-//     //     link: link
-//     // };
-//     const result = await client.db(db_name).collection("virtualBackgrounds").insertOne(backgroundObject);
-//     console.log(`New virtual background added with the following id: ${result.insertedId}`);
-// }
