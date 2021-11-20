@@ -19,7 +19,11 @@ const View = (props) => {
             </div>
             <br></br>
             <div>
-                {state === 'qna' ? <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px' }} title="Slido"></iframe> : null}
+                {state === 'qna' ? 
+                    <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px' }} title="Slido"></iframe> : 
+                state === 'speaker' ?
+                    <p>NOTHING RIGHT NOW :(</p> :
+                null}
             </div>
 
         </div>
