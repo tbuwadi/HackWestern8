@@ -1,8 +1,3 @@
-// router
-const express = require('express');
-const axios = require('axios');
-const router = express.Router();
-
 // get env variables
 require('dotenv').config();
 const db_username = process.env.DB_USERNAME;
@@ -14,9 +9,6 @@ const { response } = require('express');
 const uri = `mongodb+srv://${db_username}:${db_password}@hw-2021-event-app-db.ruaew.mongodb.net/${db_name}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
 
-router.get('/perform-crud', performCRUD, async (req, res) => {
-	res.send(res.locals.dbResponse);
-});
 
 // connect to mongodb
 async function performCRUD(successCallback, document) {
