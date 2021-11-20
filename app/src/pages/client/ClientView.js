@@ -6,9 +6,9 @@ import '../../index.css';
 
 const ClientView = () => {
   const data = [
-    "https://raw.githubusercontent.com/tbuwadi/HackWestern8/eng-clientview/wits-bg/img1.b600c14a.png?token=AHYMZK45RYMGICEG5PFLMQLBUJW64",
-    "https://raw.githubusercontent.com/tbuwadi/HackWestern8/eng-clientview/wits-bg/img2.9f130068.png?token=AHYMZK2AW56NQOUJG5ORENTBUJXA2",
-    "https://raw.githubusercontent.com/tbuwadi/HackWestern8/eng-clientview/wits-bg/img3.a5180e90.png?token=AHYMZK5IMMQWOLRNOL4WW7DBUJXCM",
+    "https://raw.githubusercontent.com/tbuwadi/HackWestern8/main/wits-bg/img1.b600c14a.png?token=AHYMZK3OEJ6P3PZJ6MQ2OBDBUKDRS",
+    "https://raw.githubusercontent.com/tbuwadi/HackWestern8/main/wits-bg/img2.9f130068.png?token=AHYMZK67N5TFAEOEALAAFADBUKDR6",
+    "https://raw.githubusercontent.com/tbuwadi/HackWestern8/main/wits-bg/img3.a5180e90.png?token=AHYMZKZJZQ4RSA6CYKHQPJTBUKDSI",
   ];
   
   return (
