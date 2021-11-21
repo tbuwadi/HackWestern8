@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Logo from '../../images/logo.png';
 import '../../index.css';
 
 const ClientLogin = () => {
@@ -22,6 +23,9 @@ const ClientLogin = () => {
 
     return (
         <div className='text-center form-box'>
+            <img alt="1" width='200px' src={Logo} /> 
+            <br/>
+            <br/>
             <form onSubmit={onFormSubmit}>
                 <label for="title">Hello! Give your event a snazzy name 😉</label>
                 <input name="title" type="text" value={title} onChange={onTitle} />
