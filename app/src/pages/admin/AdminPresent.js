@@ -35,7 +35,7 @@ const AdminPresent = (props) => {
                 : state === 'qna' ?
                 (<QA/>)
                 : state === 'announcements' ?
-                (<Announcements/>)
+                (<Announcements userType="admin"/>)
                 : null }
             </div>
           </Col>
