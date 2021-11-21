@@ -3,8 +3,6 @@ const multer = require('multer');
 
 const router = express.Router();
 
-const db = require("../db");
-
 const fileStorageEngine = multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, './wits-bg')
