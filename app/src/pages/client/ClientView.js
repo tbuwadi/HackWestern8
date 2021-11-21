@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Row, Col } from 'react-grid-system';
 import axios from 'axios';
-
 import View from '../../components/View';
-
 import '../../index.css';
-import { Container} from 'react-grid-system';
+import Logo from '../../images/logo.png';
 
 const ClientView = () => {
   
@@ -63,8 +62,14 @@ const ClientView = () => {
 
   return (
     <Container>
-     <h1>{title}</h1>
-      <br></br>
+      <Row>
+        <Col sm={10}>
+          <h1>{title}</h1>
+        </Col>
+        <Col sm={2}>
+          <img alt="1" width='200px' src={Logo}/>
+        </Col>
+      </Row>
       <View speaker={speakers} qna={qna} zoom={zoombg}/>
     </Container>
   );
