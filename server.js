@@ -33,6 +33,9 @@ app.use(updateEvent);
 const deleteResources = require('./routes/delete_resources');
 app.use(deleteResources);
 
+const uploadImage = require('./routes/upload_image');
+app.use(uploadImage);
+
 // static images are available at /static/img1.b600c14a.png, etc
 app.use('/static', express.static(path.join(__dirname, 'wits-bg')));
 
