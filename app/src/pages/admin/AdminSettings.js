@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-// import './AdminPresent.css';
 import { Container, Row, Col } from 'react-grid-system';
+
 import UpdateSlide from '../registration/UpdateSlide';
 import UpdateSpeaker from '../registration/UpdateSpeaker';
 import UpdateZoom from '../registration/UpdateZoom';
 import UpdateQna from '../registration/UpdateQna';
 import UpdateSpotify from '../registration/UpdateSpotify';
 import UpdatePostEvent from '../registration/UpdatePostEvent';
+
+import './AdminPresent.css';
+import '../registration/update.css';
 
 const AdminSettings = (props) => {
     //const { slides, speakers, music, zoombackgrounds, postevent } = props;
