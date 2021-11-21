@@ -20,9 +20,9 @@ const View = (props) => {
             <Row>
                 <Col>
                 <div>
-                <button onClick={onQnAClick}>Q & A</button>
-                <button onClick={onSpeakerClick}>Speakers</button>
                 <button onClick={onZoomClick}>Zoom backgrounds</button>
+                <button onClick={onSpeakerClick}>Speakers</button>
+                <button onClick={onQnAClick}>Q & A</button>
             </div>
                 </Col>
 
