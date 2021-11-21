@@ -23,14 +23,18 @@ const UpdateSlide = () => {
     }
 
     return (
-        <div className='single-update'>
+        <div className='single-update' style={{display: 'grid'}}>
             <form onSubmit={onFormSubmit}>
                 <h5 style={{ fontWeight: 'bold' }}>Modify Slide Link</h5>
-                <label for="message">Slide Link</label> <br />
-                <input name="message" type="text" value={value} onChange={onChangeValue} />
+                <div className='layer1'>
+                    <label for="message">Slide Link</label> <br /><br/>
+                    <input name="message" type="text" value={value} onChange={onChangeValue} />
+                </div>
+                <div className='layer1'>
+                    <button type='submit'>Edit</button>
+                </div>
                 <br/>
                 <br/>
-                <button type='submit'>Edit</button>
             </form>
         </div>
     )

@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
-import './AdminPresent.css';
 import { Container, Row, Col } from 'react-grid-system';
-import Announcements from '../../components/AdminSlides/Announcements';
+
+import UpdateSlide from '../registration/UpdateSlide';
+import UpdateSpeaker from '../registration/UpdateSpeaker';
+import UpdateZoom from '../registration/UpdateZoom';
+import UpdateQna from '../registration/UpdateQna';
+import UpdateSpotify from '../registration/UpdateSpotify';
+import UpdatePostEvent from '../registration/UpdatePostEvent';
+
+import './AdminPresent.css';
+import '../registration/update.css';
+
 const AdminSettings = (props) => {
     //const { slides, speakers, music, zoombackgrounds, postevent } = props;
     const [state, setState] = useState('slides');
@@ -11,6 +20,7 @@ const AdminSettings = (props) => {
     const onMusicClick = (e) => { setState('music') }
     const onZoomClick = (e) => { setState('zoombackgrounds') }
     const onPostEventClick = (e) => { setState('postevent') }
+    const onQnAClick = (e) => { setState('qna') }
 
     return (
         <Container fluid>
@@ -21,6 +31,7 @@ const AdminSettings = (props) => {
                 <button className="tabBtn" onClick={onMusicClick}>Waiting Music</button>
                 <button className="tabBtn" onClick={onZoomClick}>Zoom Backgrounds</button>
                 <button className="tabBtn" onClick={onPostEventClick}>Post Event</button>
+                <button className="tabBtn" onClick={onQnAClick}>Q&A</button>
             </Col>
             <Col sm={2}>
                 <button className="tabBtn">Present</button>
@@ -31,15 +42,17 @@ const AdminSettings = (props) => {
             <br></br>
             <div>
                 { state === 'slides' ? 
-                (<h3>Update Slides</h3>)
+                <UpdateSlide />
                 : state === 'speakers' ?
-                (<h3>Update Speakers</h3>)
+                <UpdateSpeaker />
                 : state === 'music' ?
-                (<h3>Waiting Music</h3>)
+                <UpdateSpotify />
                 : state === 'zoombackgrounds' ?
-                (<h3>Zoom Backgrounds</h3>)
+                <UpdateZoom />
                 : state === 'postevent' ?
-                (<h3>Post Event</h3>)
+                <UpdatePostEvent />
+                : state === 'qna' ?
+                <UpdateQna />
                 : null }
             </div>
           </Col>

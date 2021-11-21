@@ -47,14 +47,14 @@
     flex-direction: row;
     flex-basis: 100%;
   }
-  input {
+  /* input {
     border-radius: 3px;
     width: 90%;
     padding: 10px;
     box-shadow: none;
     background: none;
     border: 1px solid #ccc;
-  }
+  } */
   .myIcon {
     text-align: center;
     margin: 5px;

@@ -23,17 +23,21 @@ const UpdatePostEvent = () => {
     }
 
     return (
-        <div className='single-update'>
+        <div className='single-update' style={{display: 'grid'}}>
             <form onSubmit={onFormSubmit}>
                 <h5 style={{ fontWeight: 'bold' }}>Modify Post Event Email Message</h5>
-                <label for="message">Post event email message</label> <br />
-                <textarea rows="5" cols="60" name="message" onChange={onChangeValue}>{value}</textarea>
-                <br/>
-                <br/>
-                <button type='submit'>Edit</button>
+                <div className='layer1'>
+                    <label for="message">Post event email message</label> <br />
+                    <textarea rows="5" cols="60" name="message" onChange={onChangeValue}>{value}</textarea>
+                </div>
+                <div className='layer1'>
+                    <button type='submit'>Edit</button>
+                </div>
+
             </form>
         </div>
     )
+
 }
 
 export default UpdatePostEvent;
