@@ -24,14 +24,16 @@ const View = (props) => {
                 { state === 'qna' ? 
                     <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px', borderRadius: '15px'}} title="Slido"></iframe>
                 : state === 'speaker' ?
-                    speaker.map(item => {
-                        return (
-                            <div>
-                                <h5 style={{ fontWeight: 'bold' }}>{item.firstName} {item.lastName}</h5>
-                                <p>{item.bio}</p>
-                            </div>
-                        )
-                    })
+                    speaker !== [] ?
+                        speaker.map(item => {
+                            return (
+                                <div>
+                                    <h5 style={{ fontWeight: 'bold' }}>{item.firstName} {item.lastName}</h5>
+                                    <p>{item.bio}</p>
+                                </div>
+                            )
+                        })
+                    : null
                 : state === 'zoom' ?
                     <Carousel slides={ zoomImage } autoplay={ false }/>
                 : null }

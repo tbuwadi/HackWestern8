@@ -1,0 +1,24 @@
+.layer1{
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 20px;
+  }
+
+.single-update input {
+    width: 400px;
+    border-radius: 15px;
+    border: 0;
+    height: 50px;
+    color: #696969;
+    padding: 10px;
+    display: block;
+    margin-top: -30px;
+}
+
+.single-update textarea {
+    border-radius: 15px;
+    border: 0;
+    color: #696969;
+    padding: 10px;
+    display: block;
+}
