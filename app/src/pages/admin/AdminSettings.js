@@ -29,7 +29,7 @@ const AdminSettings = (props) => {
                 <button className="tabBtn" onClick={onSlidesClick}>Update Slides</button>
                 <button className="tabBtn" onClick={onSpeakersClick}>Update Speakers</button>
                 <button className="tabBtn" onClick={onMusicClick}>Waiting Music</button>
-                <button className="tabBtn" onClick={onZoomClick}>Zoom Backgrounds</button>
+                <button className="tabBtn" onClick={onZoomClick}>Virtual Backgrounds</button>
                 <button className="tabBtn" onClick={onPostEventClick}>Post Event</button>
                 <button className="tabBtn" onClick={onQnAClick}>Q&A</button>
             </Col>
