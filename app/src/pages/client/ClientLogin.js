@@ -17,7 +17,6 @@ const ClientLogin = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        // update database
         axios.post(`http://localhost:5000/enter-event/${name}/${email}/${code}`)
             .then(function(res) {
                 console.log(res.data);

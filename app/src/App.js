@@ -6,11 +6,11 @@ import AdminSettings from './pages/admin/AdminSettings';
 import ClientView from './pages/client/ClientView';
 import ClientLogin from './pages/client/ClientLogin';
 import CreateEvent from './pages/registration/CreateEvent';
-import UpdateSpeaker from './pages/registration/UpdateSpeaker';
+// import UpdateSpeaker from './pages/registration/UpdateSpeaker';
 
 
 // testing apps
-import Notification from './components/Notification';
+//import Notification from './components/Notification';
 
  
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
        <BrowserRouter>
         <div>
             <Routes>
-              <Route path="/" exact element={<ClientLogin/>} exact/>
+              <Route path="/" exact element={<ClientLogin/>} />
               <Route path="/adminpresent/:id" exact element={<AdminPresent/>}/>
               <Route path="/adminsettings/:id" exact element={<AdminSettings/>}/>
               <Route path="/clientview/:id" exact element={<ClientView/>}/>

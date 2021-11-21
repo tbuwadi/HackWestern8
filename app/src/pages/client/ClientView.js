@@ -4,11 +4,10 @@ import axios from 'axios';
 import View from '../../components/View';
 
 import '../../index.css';
-import { Container, Row, Col } from 'react-grid-system';
+import { Container} from 'react-grid-system';
 
 const ClientView = () => {
-  const urlComponents = (new URL(document.location)).pathname.split('/');
-  const id = urlComponents[urlComponents.length - 1];
+  
   // delete these test values on demo
   const zoombgg = [
     "https://raw.githubusercontent.com/tbuwadi/HackWestern8/main/wits-bg/img1.b600c14a.png?token=AHYMZK3OEJ6P3PZJ6MQ2OBDBUKDRS",
@@ -34,12 +33,14 @@ const ClientView = () => {
     }
   ];
 
-  const [title, setTitle] = useState('Resume Revamp');
-  const [qna, setQna] = useState('https://app.sli.do/event/1yidejwe'); // TODO: Change default value
-  const [zoombg, setZoombg] = useState(zoombgg); // TODO: Change default value
+  const [title] = useState('Resume Revamp');
+  const [qna] = useState('https://app.sli.do/event/1yidejwe'); // TODO: Change default value
+  const [zoombg] = useState(zoombgg); // TODO: Change default value
   const [speakers, setSpeakers] = useState(speakerss); // TODO: Change default value
   
   useEffect(() => { 
+    const urlComponents = (new URL(document.location)).pathname.split('/');
+    const id = urlComponents[urlComponents.length - 1];
     console.log('BACKEND INETGRATION HERE')
     // SET THE VARIABLES, CALL API GET METHODS
 

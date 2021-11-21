@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './update.css';
 
 const UpdateZoom = () => {
-    const [value, setValue] = useState([]);
+    // const [value, setValue] = useState([]);
     const [url, setUrl] = useState('');
 
     // useeffect causes get and post requests to api to not sync up will

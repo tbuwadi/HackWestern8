@@ -16,7 +16,7 @@ export default class Announcements extends Component {
 
   // if new message was submitted from child component // process
   submitted = getNewMessage => {
-    if (getNewMessage != "") {
+    if (getNewMessage !== "") {
       // match the state format
       const newMessage = { text: getNewMessage };
       // merge new message in copy of state stored messages

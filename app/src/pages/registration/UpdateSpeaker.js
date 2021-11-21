@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import './update.css';
@@ -8,7 +8,7 @@ const UpdateSpeaker = () => {
     const id = urlComponents[urlComponents.length - 1];
 
     
-    const [value, setValue] = useState([]);
+    const [value] = useState([]);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [bio, setBio] = useState('');

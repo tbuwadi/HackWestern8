@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './update.css';
 
 const UpdateQna = () => {
     const urlComponents = (new URL(document.location)).pathname.split('/');
     const id = urlComponents[urlComponents.length - 1];
-    
+
     const [value, setValue] = useState('');
 
     // useeffect causes get and post requests to api to not sync up will

@@ -23,7 +23,7 @@ const AdminPresent = (props) => {
                 <button className="tabBtn" onClick={onAnnouncementsClick}>Announcements</button>
             </Col>
           <Col xs={4}>
-         <iframe className="spotify" src="https://open.spotify.com/embed/album/2wcv0lHk5fUYyNGKugGa7q?utm_source=generator" width="50%" height="80px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+         <iframe title="spotify" className="spotify" src="https://open.spotify.com/embed/album/2wcv0lHk5fUYyNGKugGa7q?utm_source=generator" width="50%" height="80px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
          </Col>
           </Row>
           <Row>

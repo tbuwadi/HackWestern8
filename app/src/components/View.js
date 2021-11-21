@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Carousel } from '3d-react-carousal';
-import { Container, Row, Col } from 'react-grid-system';
+import { Row, Col } from 'react-grid-system';
 import Announcements from "../components/AdminSlides/Announcements"
 
 import './View.css';
@@ -14,7 +14,7 @@ const View = (props) => {
     const { qna, speaker, zoom } = props;
     const [state, setState] = useState('zoom');
     
-    const zoomImage = zoom.map(item => { return <img  src={item} /> });
+    const zoomImage = zoom.map(item => { return <img alt="" alt-text="" src={item} /> });
 
     const onQnAClick = (e) => { setState('qna') }
     const onSpeakerClick = (e) => { setState('speaker') }
@@ -39,10 +39,10 @@ const View = (props) => {
                     <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px', borderRadius: '15px'}} title="Slido"></iframe>
                 : state === 'speaker' ?
                     <Row  sm={12} style={{ marginTop: '40px'}}>
-                        <img width='300px' style={{ marginBottom: '15px', marginRight: '15px'}} src={Person1}/><br/>
-                        <img width='300px' style={{ marginBottom: '15px', marginRight: '15px'}} src={Person2}/><br/>
-                        <img width='300px' style={{ marginBottom: '15px', marginRight: '15px'}} src={Person3}/><br/>
-                        <img width='300px' style={{ marginBottom: '15px', marginRight: '15px'}} src={Person4}/><br/>
+                        <img width='300px' alt="" style={{ marginBottom: '15px', marginRight: '15px'}} src={Person1}/><br/>
+                        <img width='300px' alt="" style={{ marginBottom: '15px', marginRight: '15px'}} src={Person2}/><br/>
+                        <img width='300px' alt="" style={{ marginBottom: '15px', marginRight: '15px'}} src={Person3}/><br/>
+                        <img width='300px' alt="" style={{ marginBottom: '15px', marginRight: '15px'}} src={Person4}/><br/>
 
                         {speaker !== [] ?
                         <div>
