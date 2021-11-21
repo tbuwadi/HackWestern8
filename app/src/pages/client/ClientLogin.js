@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-
+import Logo from '../../images/logo.png';
 import '../../index.css';
 import './ClientLogin.css';
 
@@ -30,6 +30,9 @@ const ClientLogin = () => {
 
     return (
         <div className='text-center form-box'>
+            <img alt="1" width='200px' src={Logo} /> 
+            <br/>
+            <br/>
             <form onSubmit={onFormSubmit}>
                 <label for="name">Full Name</label>
                 <input name="name" type="text" value={name} onChange={onChangeName} />
