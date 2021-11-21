@@ -26,7 +26,7 @@ const UpdateZoom = () => {
     return (
         <div className='single-update' style={{display: 'grid'}}>
             <form onSubmit={onFormSubmit}>
-                <h5 style={{ fontWeight: 'bold' }}>Add A Zoom Background</h5>
+                <h5 style={{ fontWeight: 'bold' }}>Add A Virtual Background</h5>
                 <div className='layer1'>
                     <label for="url">Image URL</label> <br /><br/>
                     <input name="url" type="text" value={url} onChange={onChangeUrl} />
