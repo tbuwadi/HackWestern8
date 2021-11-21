@@ -19,7 +19,7 @@ class App extends Component {
        <BrowserRouter>
         <div>
             <Routes>
-              <Route path="/" exact element={<AdminPresent/>} exact/>
+              <Route path="/" exact element={<ClientLogin/>} exact/>
               <Route path="/adminpresent/:id" exact element={<AdminPresent/>}/>
               <Route path="/adminsettings/:id" exact element={<AdminSettings/>}/>
               <Route path="/clientview/:id" exact element={<ClientView/>}/>

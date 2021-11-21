@@ -93,8 +93,10 @@ async function getSpeakers(req){
 
 // add speakers
 async function addSpeaker(req){
-    const speaker = req.params.speaker;
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(speaker._id) }, { $push: { speakers: speaker } } );
+    const id = req.params._id;
+    const speaker = req.params;
+    delete speaker._id;
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(id) }, { $push: { speakers: speaker } } );
     if (result.ok) {
         console.log(`${speaker.firstName} added to event info`);
     } else {
@@ -171,6 +173,11 @@ async function deleteSpeaker(req){
     return speaker;
 }
 
+// get title from database
+async function getTitle(req){
+    const response = await client.db(db_name).collection("events").find({_id: ObjectID(req.params._id) }).toArray();
+    return response[0].title;
+}
 
 module.exports = {
     performCRUD,
@@ -189,4 +196,5 @@ module.exports = {
     getPlaylist,
     getSlides,
     deleteSpeaker,
+    getTitle,
 };

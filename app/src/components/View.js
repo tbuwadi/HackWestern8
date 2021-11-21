@@ -38,14 +38,15 @@ const View = (props) => {
                 { state === 'qna' ? 
                     <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px', borderRadius: '15px'}} title="Slido"></iframe>
                 : state === 'speaker' ?
-                    <div  style={{ marginTop: '40px'}}>
-                        <img width='400px' style={{ marginBottom: '15px'}} src={Person1}/><br/>
-                        <img width='400px' style={{ marginBottom: '15px'}} src={Person2}/><br/>
-                        <img width='400px' style={{ marginBottom: '50px'}} src={Person4}/><br/>
+                    <Row  sm={12} style={{ marginTop: '40px'}}>
+                        <img width='300px' style={{ marginBottom: '15px', marginRight: '15px'}} src={Person1}/><br/>
+                        <img width='300px' style={{ marginBottom: '15px', marginRight: '15px'}} src={Person2}/><br/>
+                        <img width='300px' style={{ marginBottom: '15px', marginRight: '15px'}} src={Person3}/><br/>
+                        <img width='300px' style={{ marginBottom: '15px', marginRight: '15px'}} src={Person4}/><br/>
 
                         {speaker !== [] ?
                         <div>
-                            <h3>Other speakers</h3>
+                            <h3 style={{ marginTop: '20px'}}>Other speakers</h3>
                             <br />
                             {speaker.map(item => {
                                 return (
@@ -57,7 +58,7 @@ const View = (props) => {
                             })}
                         </div>
                         : null}
-                    </div>
+                    </Row>
                 : state === 'zoom' ?
                     <div style={{ marginTop: '45px'}}>
                         <Carousel slides={ zoomImage } autoplay={ false }/>

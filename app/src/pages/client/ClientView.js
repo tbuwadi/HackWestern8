@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import View from '../../components/View';
 
@@ -6,7 +7,8 @@ import '../../index.css';
 import { Container, Row, Col } from 'react-grid-system';
 
 const ClientView = () => {
-  
+  const urlComponents = (new URL(document.location)).pathname.split('/');
+  const id = urlComponents[urlComponents.length - 1];
   // delete these test values on demo
   const zoombgg = [
     "https://raw.githubusercontent.com/tbuwadi/HackWestern8/main/wits-bg/img1.b600c14a.png?token=AHYMZK3OEJ6P3PZJ6MQ2OBDBUKDRS",
@@ -33,7 +35,7 @@ const ClientView = () => {
   ];
 
   const [title, setTitle] = useState('Loading...');
-  const [qa, setQa] = useState('https://app.sli.do/event/1yidejwe'); // TODO: Change default value
+  const [qna, setQna] = useState('https://app.sli.do/event/1yidejwe'); // TODO: Change default value
   const [zoombg, setZoombg] = useState(zoombgg); // TODO: Change default value
   const [speakers, setSpeakers] = useState(speakerss); // TODO: Change default value
   
@@ -41,14 +43,28 @@ const ClientView = () => {
     console.log('BACKEND INETGRATION HERE')
     // SET THE VARIABLES, CALL API GET METHODS
 
+    // setQna(result);
+    axios.get(`http://localhost:5000/get-speakers/${id}`)
+      .then(function(res){
+        console.log(res.data);
+        setSpeakers(res.data);
+      }); 
+    
+      // mongo not synced up
+    // axios.get(`http://localhost:5000/get-title/${id}`)
+    //   .then(function(res){
+    //     console.log(res.data);
+    //     setTitle(res.data);
+    //   }); 
+
     
   }, []);
 
   return (
     <Container>
-      <h1>{title}</h1>
+     <h1>{title}</h1>
       <br></br>
-      <View speaker={speakers} qna={qa} zoom={zoombg}/>
+      <View speaker={speakers} qna={qna} zoom={zoombg}/>
     </Container>
   );
 }

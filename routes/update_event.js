@@ -35,19 +35,18 @@ async function enterEvent(req, res, next) {
 
 
 // route to add speaker bio
-router.post('/add-speaker/:_id/:firstName/:lastName/:email/:bio/:website', addSpeaker, async (req, res) => {
+router.post('/add-speaker/:_id/:firstName/:lastName/:bio', addSpeaker, async (req, res) => {
 	res.send(res.locals.speaker);
 });
 
 async function addSpeaker(req, res, next) { 
-    if (!req.params.speaker) {
-        req.params.speaker = {
+    console.log("asdasd")
+    if (!req.params) {
+        req.params = {
             _id: "6199244fc8af6bc5ec2ff583",
             firstName: "Elaine",
             lastName: "Liu",
-            email: "elaineliu7g@gmail.com",
             bio: "Student at Western",
-            website: "eliu72@github.io",
         }
     }
     const response = db.performCRUD(db.addSpeaker, req);

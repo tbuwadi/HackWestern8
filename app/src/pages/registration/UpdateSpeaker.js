@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import './update.css';
 
 const UpdateSpeaker = () => {
@@ -29,6 +31,8 @@ const UpdateSpeaker = () => {
         e.preventDefault();
 
         // update new value to db
+        axios.post(`http://localhost:5000/add-speaker/${id}/${firstName}/${lastName}/${bio}`)
+            .then(res => console.log(res.data));
 
     }
 

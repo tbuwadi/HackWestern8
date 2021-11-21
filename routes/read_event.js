@@ -6,13 +6,34 @@ const router = express.Router();
 // get db
 const db = require("../db");
 
+// route to get title
+router.get('/get-title/:_id', getTitle, async (req, res) => {
+    res.send(res.locals.title);
+});
+
+async function getTitle(req, res, next) {
+    if (!req.params._id) {
+        req.params._id = "6199244fc8af6bc5ec2ff583";
+    }
+    const response = db.performCRUD(db.getTitle, req);
+    if (response) {
+        response.then(function(data) {
+            res.locals.title = data;
+            next();
+        });
+    }
+    else {
+        res.send('Could not get title');
+    }
+}
+
 // route to get speakers
 router.get('/get-speakers/:_id', getSpeakers, async (req, res) => {
 	res.send(res.locals.speakers);
 });
 
 async function getSpeakers(req, res, next) { 
-    if (!req.params._id) {
+    if (!req.params) {
         req.params._id = "6199244fc8af6bc5ec2ff583";
     }
     const response = db.performCRUD(db.getSpeakers, req);
@@ -77,15 +98,15 @@ async function getEmailContent(req, res, next) {
     if (!req.params._id) {
         req.params._id = "6199244fc8af6bc5ec2ff583";
     }
-    const response = db.performCRUD(db.getSlides, req);
+    const response = db.performCRUD(db.getEmailContent, req);
     if (response) {
         response.then(function(data) {
-            res.locals.slides = data;
+            res.locals.emailContent = data;
             next();
         });
     }
     else {
-        res.send('Could not get slides');
+        res.send('Could not get email content');
     }
 }
 
