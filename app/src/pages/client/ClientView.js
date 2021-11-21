@@ -32,19 +32,20 @@ const ClientView = () => {
   ];
 
   const [title, setTitle] = useState('Loading...');
-  const [desc, setDesc] = useState('Loading...');
   const [qa, setQa] = useState('https://app.sli.do/event/1yidejwe'); // TODO: Change default value
   const [zoombg, setZoombg] = useState(zoombgg); // TODO: Change default value
   const [speakers, setSpeakers] = useState(speakerss); // TODO: Change default value
   
   useEffect(() => { 
     console.log('BACKEND INETGRATION HERE')
+    // SET THE VARIABLES, CALL API GET METHODS
+
+    
   }, []);
 
   return (
     <div className='container' style={{ marginTop: '50px' }}>
       <h1>{title}</h1>
-      <h5>{desc}</h5>
       <br></br>
       <View speaker={speakers} qna={qa} zoom={zoombg}/>
     </div>
