@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import View from '../../components/View';
 
 import '../../index.css';
+import { Container} from 'react-grid-system';
 
 const ClientView = () => {
   
@@ -17,38 +19,54 @@ const ClientView = () => {
     {
       "firstName": "John",
       "lastName": "Smith",
-      "bio": "swe @ hiremeanywhere"
+      "bio": "SWE @ IBM"
     },
     {
       "firstName": "Bob",
       "lastName": "Smith",
-      "bio": "@John's brother"
+      "bio": "Design @ Shopify"
     },
     {
       "firstName": "Jim",
       "lastName": "Tim",
-      "bio": "@John's cousin"
+      "bio": "PM @ Google"
     }
   ];
 
-  const [title, setTitle] = useState('Loading...');
-  const [qa, setQa] = useState('https://app.sli.do/event/1yidejwe'); // TODO: Change default value
-  const [zoombg, setZoombg] = useState(zoombgg); // TODO: Change default value
+  const [title] = useState('Resume Revamp');
+  const [qna] = useState('https://app.sli.do/event/1yidejwe'); // TODO: Change default value
+  const [zoombg] = useState(zoombgg); // TODO: Change default value
   const [speakers, setSpeakers] = useState(speakerss); // TODO: Change default value
   
   useEffect(() => { 
+    const urlComponents = (new URL(document.location)).pathname.split('/');
+    const id = urlComponents[urlComponents.length - 1];
     console.log('BACKEND INETGRATION HERE')
     // SET THE VARIABLES, CALL API GET METHODS
+
+    // setQna(result);
+    axios.get(`http://localhost:5000/get-speakers/${id}`)
+      .then(function(res){
+        console.log(res.data);
+        setSpeakers(res.data);
+      }); 
+    
+      // mongo not synced up
+    // axios.get(`http://localhost:5000/get-title/${id}`)
+    //   .then(function(res){
+    //     console.log(res.data);
+    //     setTitle(res.data);
+    //   }); 
 
     
   }, []);
 
   return (
-    <div className='container' style={{ marginTop: '50px' }}>
-      <h1>{title}</h1>
+    <Container>
+     <h1>{title}</h1>
       <br></br>
-      <View speaker={speakers} qna={qa} zoom={zoombg}/>
-    </div>
+      <View speaker={speakers} qna={qna} zoom={zoombg}/>
+    </Container>
   );
 }
 

@@ -1,0 +1,14 @@
+.wrapperQA{
+    display: block;
+    overflow: hidden;
+    border-radius: 50px;
+    transform: translateZ(0px);
+    text-align: center;
+    
+}
+.wrapperSlide{
+    display: block;
+    overflow: hidden;
+    transform: translateZ(0px);
+    /* border: 3px solid #BFE5D7; */
+}

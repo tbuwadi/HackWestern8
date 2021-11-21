@@ -1,18 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+
 import './update.css';
 
 const UpdateSpeaker = () => {
-    const [value, setValue] = useState([]);
+    const urlComponents = (new URL(document.location)).pathname.split('/');
+    const id = urlComponents[urlComponents.length - 1];
+
+    
+    const [value] = useState([]);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [bio, setBio] = useState('');
 
-    useEffect(() => {
-        console.log('whatever is in this block is called whenever value changes')
-        // CALL API TO RETREIEVE CURRENT MSG VALUE FROM DB;
-        // newValue = api respnse;
-        // setValue(newValue);
-    }, []);
+    // useeffect causes get and post requests to api to not sync up will
+    // useEffect(() => {
+    //     console.log('whatever is in this block is called whenever value changes')
+    //     // CALL API TO RETREIEVE CURRENT MSG VALUE FROM DB;
+    //     // newValue = api respnse;
+    //     // setValue(newValue);
+    // }, []);
 
 
     const onChangeFirstName = (e) => { setFirstName(e.target.value) }
@@ -24,6 +31,8 @@ const UpdateSpeaker = () => {
         e.preventDefault();
 
         // update new value to db
+        axios.post(`http://localhost:5000/add-speaker/${id}/${firstName}/${lastName}/${bio}`)
+            .then(res => console.log(res.data));
 
     }
 

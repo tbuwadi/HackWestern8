@@ -37,32 +37,34 @@ async function listDatabases(){
 
 // create event and add to db
 async function createEvent(req) {
-    const newEvent = req.params.event_details;
+    const newEvent = req.params;
     const result = await client.db(db_name).collection(collection).insertOne(newEvent);
-    if (result.value) {
+    if (result.ok) {
         console.log(`New event added with the following id: ${result.insertedId}`);
     } else {
         console.log(`Event creation failed`);
     }
-    return newEvent;
+    return result.insertedId;
 }
 
 // add attendee to event
 async function addAttendee(req){
+    const id = req.params._id;
     const attendee = req.params;
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(attendee._id) }, { $push: { attendees: attendee } } );
-    if (result.value) {
+    delete attendee._id;
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(id) }, { $push: { attendees: attendee } } );
+    if (result.ok) {
         console.log(`${attendee.name} joined the event`);
     } else {
         console.log(`${attendee.name} could not join the event`);
     }
-    return attendee;
+    return id;
 }
 
 // add announcement
 async function addAnnouncement(announcementObject){
     const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(announcementObject._id) }, { $push: { announcements: announcementObject } } );
-    if (result.value) {
+    if (result.ok) {
         console.log(`${announcementObject.title} added to announcements`);
     } else {
         console.log(`${announcementObject.title} announcement failed to be added`);
@@ -91,9 +93,11 @@ async function getSpeakers(req){
 
 // add speakers
 async function addSpeaker(req){
-    const speaker = req.params.speaker;
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(speaker._id) }, { $push: { speakers: speaker } } );
-    if (result.value) {
+    const id = req.params._id;
+    const speaker = req.params;
+    delete speaker._id;
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(id) }, { $push: { speakers: speaker } } );
+    if (result.ok) {
         console.log(`${speaker.firstName} added to event info`);
     } else {
         console.log(`${speaker.firstName} failed to be added`);
@@ -103,26 +107,46 @@ async function addSpeaker(req){
 
 // add slides
 async function updateSlides(req){
-    const slides = req.params.slides;
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(slides._id) }, { $set: { slides: slides } } );
-    if (result.value) {
-        console.log(`${slides.title} added to event`);
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(req.params._id) }, { $set: { slides: req.params.url } } );
+    if (result.ok) {
+        console.log('New slides added to event');
     } else {
-        console.log(`${slides.title} failed to be added`);
+        console.log('Slides failed to be added');
     }
-    return slides;
+    return result;
 }
 
 // update playlist
 async function updatePlaylist(req){
-    const playlist = req.params.playlist;
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(playlist._id) }, { $set: { playlist: playlist } } );
-    if (result.value) {
-        console.log(`${playlist.title} added to event`);
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(req.params._id) }, { $set: { playlist: req.params.url } } );
+    if (result.ok) {
+        console.log(`New playlist added to event`);
     } else {
-        console.log(`${playlist.title} failed to be added`);
+        console.log(`Playlist failed to be added`);
     }
-    return playlist;
+    return result;
+}
+
+// update qna
+async function updateQna(req){
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(req.params._id) }, { $set: { qna: req.params.url } } );
+    if (result.ok) {
+        console.log(`New qna link added to event`);
+    } else {
+        console.log(`Qna link failed to be added`);
+    }
+    return result;
+}
+
+// update email content
+async function updateEmailContent(req){
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(req.params._id) }, { $set: { emailContent: req.params.content } } );
+    if (result.ok) {
+        console.log(`New email content added to event`);
+    } else {
+        console.log(`Email content failed to be added`);
+    }
+    return result;
 }
 
 // get playlist url from database
@@ -141,7 +165,7 @@ async function getSlides(req){
 async function deleteSpeaker(req){
     const speaker = req.params.speaker;
     const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(speaker._id ) }, { $pull: { speakers: { firstName: speaker.firstName } } } );
-    if (result.value) {
+    if (result.ok) {
         console.log(`${speaker.firstName} removed from event`);
     } else {
         console.log(`${speaker.firstName} failed to be removed`);
@@ -149,6 +173,11 @@ async function deleteSpeaker(req){
     return speaker;
 }
 
+// get title from database
+async function getTitle(req){
+    const response = await client.db(db_name).collection("events").find({_id: ObjectID(req.params._id) }).toArray();
+    return response[0].title;
+}
 
 module.exports = {
     performCRUD,
@@ -158,6 +187,8 @@ module.exports = {
     addSpeaker,
     updateSlides,
     updatePlaylist,
+    updateQna,
+    updateEmailContent,
     listDatabases,
     getAnnouncements,
     getAttendees,
@@ -165,4 +196,5 @@ module.exports = {
     getPlaylist,
     getSlides,
     deleteSpeaker,
+    getTitle,
 };
