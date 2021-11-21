@@ -17,6 +17,7 @@ const ClientLogin = () => {
             // .then(res => event_id = res);
             .then(function(res){ 
                 console.log(res.data);
+                setTitle('');
                 window.location = `/adminsettings/${res.data}`;
             });
     }

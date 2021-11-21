@@ -32,7 +32,11 @@ const UpdateSpeaker = () => {
 
         // update new value to db
         axios.post(`http://localhost:5000/add-speaker/${id}/${firstName}/${lastName}/${bio}`)
-            .then(res => console.log(res.data));
+            .then(() => {
+                setFirstName('');
+                setLastName('');
+                setBio('');
+            });
 
     }
 

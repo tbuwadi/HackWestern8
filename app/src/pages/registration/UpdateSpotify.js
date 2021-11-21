@@ -22,9 +22,7 @@ const UpdateSpotify = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
         axios.post(`http://localhost:5000/update-playlist/${id}/${value}`)
-            .then(res => console.log(res.data));
-        // update new value to db
-
+            .then(setValue(''));
     }
 
     return (

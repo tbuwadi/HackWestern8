@@ -23,7 +23,7 @@ const UpdateQna = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
         axios.post(`http://localhost:5000/update-qna/${id}/${value}`)
-            .then(res => console.log(res.data));
+            .then(setValue(''));
         // update new value to db
 
     }
