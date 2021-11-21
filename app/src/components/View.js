@@ -7,7 +7,7 @@ import './View.css';
 
 const View = (props) => {
     const { qna, speaker, zoom } = props;
-    const [state, setState] = useState('qna');
+    const [state, setState] = useState('zoom');
     
     const zoomImage = zoom.map(item => { return <img  src={item} /> });
 
@@ -20,7 +20,7 @@ const View = (props) => {
             <Row>
                 <Col>
                 <div>
-                <button onClick={onZoomClick}>Zoom backgrounds</button>
+                <button onClick={onZoomClick}>Virtual backgrounds</button>
                 <button onClick={onSpeakerClick}>Speakers</button>
                 <button onClick={onQnAClick}>Q & A</button>
             </div>
