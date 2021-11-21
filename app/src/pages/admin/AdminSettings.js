@@ -8,7 +8,6 @@ import UpdateZoom from '../registration/UpdateZoom';
 import UpdateQna from '../registration/UpdateQna';
 import UpdateSpotify from '../registration/UpdateSpotify';
 import UpdatePostEvent from '../registration/UpdatePostEvent';
-
 import './AdminPresent.css';
 import '../registration/update.css';
 
@@ -37,7 +36,7 @@ const AdminSettings = (props) => {
                 <button className="tabBtn" onClick={onQnAClick}>Q&A</button>
             </Col>
             <Col sm={2}>
-               <Link to={`/AdminPresent/${id}`}><button className="tabBtn">Present</button></Link>
+                <Link to={`/AdminPresent/${id}`}><button className="tabBtn">Present</button></Link>
             </Col>
           </Row>
           <Row>
