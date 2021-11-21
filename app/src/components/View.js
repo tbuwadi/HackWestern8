@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Carousel } from '3d-react-carousal';
 import './View.css';
-import UpdateZoom from '../pages/registration/UpdateZoom';
 
 const View = (props) => {
     const { qna, speaker, zoom } = props;
@@ -22,7 +21,6 @@ const View = (props) => {
             </div>
             <br></br>
             <div>
-                <UpdateZoom />
                 { state === 'qna' ? 
                     <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px', borderRadius: '15px'}} title="Slido"></iframe>
                 : state === 'speaker' ?
