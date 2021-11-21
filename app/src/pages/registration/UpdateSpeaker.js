@@ -2,17 +2,22 @@ import React, { useState, useEffect } from 'react';
 import './update.css';
 
 const UpdateSpeaker = () => {
+    const urlComponents = (new URL(document.location)).pathname.split('/');
+    const id = urlComponents[urlComponents.length - 1];
+
+    
     const [value, setValue] = useState([]);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [bio, setBio] = useState('');
 
-    useEffect(() => {
-        console.log('whatever is in this block is called whenever value changes')
-        // CALL API TO RETREIEVE CURRENT MSG VALUE FROM DB;
-        // newValue = api respnse;
-        // setValue(newValue);
-    }, []);
+    // useeffect causes get and post requests to api to not sync up will
+    // useEffect(() => {
+    //     console.log('whatever is in this block is called whenever value changes')
+    //     // CALL API TO RETREIEVE CURRENT MSG VALUE FROM DB;
+    //     // newValue = api respnse;
+    //     // setValue(newValue);
+    // }, []);
 
 
     const onChangeFirstName = (e) => { setFirstName(e.target.value) }

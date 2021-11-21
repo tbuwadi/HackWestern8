@@ -5,12 +5,13 @@ const UpdateZoom = () => {
     const [value, setValue] = useState([]);
     const [url, setUrl] = useState('');
 
-    useEffect(() => {
-        console.log('whatever is in this block is called whenever value changes')
-        // CALL API TO RETREIEVE CURRENT MSG VALUE FROM DB;
-        // newValue = api respnse;
-        // setValue(newValue);
-    }, []);
+    // useeffect causes get and post requests to api to not sync up will
+    // useEffect(() => {
+    //     console.log('whatever is in this block is called whenever value changes')
+    //     // CALL API TO RETREIEVE CURRENT MSG VALUE FROM DB;
+    //     // newValue = api respnse;
+    //     // setValue(newValue);
+    // }, []);
 
 
     const onChangeUrl = (e) => { setUrl(e.target.value) }

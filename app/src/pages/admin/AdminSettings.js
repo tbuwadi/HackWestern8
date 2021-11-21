@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 import { Container, Row, Col } from 'react-grid-system';
 
 import UpdateSlide from '../registration/UpdateSlide';
@@ -12,6 +13,8 @@ import './AdminPresent.css';
 import '../registration/update.css';
 
 const AdminSettings = (props) => {
+    const urlComponents = (new URL(document.location)).pathname.split('/');
+    const id = urlComponents[urlComponents.length - 1];
     //const { slides, speakers, music, zoombackgrounds, postevent } = props;
     const [state, setState] = useState('slides');
     
@@ -34,7 +37,7 @@ const AdminSettings = (props) => {
                 <button className="tabBtn" onClick={onQnAClick}>Q&A</button>
             </Col>
             <Col sm={2}>
-                <button className="tabBtn">Present</button>
+               <Link to={`/AdminPresent/${id}`}><button className="tabBtn">Present</button></Link>
             </Col>
           </Row>
           <Row>

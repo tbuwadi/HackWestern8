@@ -7,16 +7,17 @@ const router = express.Router();
 const db = require("../db");
 
 // route to create event
-router.put('/create-event/:_id/:title', createEvent, async (req, res) => {
+router.put('/create-event/:title', createEvent, async (req, res) => {
 	res.send(res.locals.event);
 });
 
 async function createEvent(req, res, next) { 
-    if (!req.params.event_details) {
-        req.params.event_details = {
+    if (!req.params) {
+        req.params = {
             title: "Hack Western"
         };
     }
+    console.log(req.params);
     const response = db.performCRUD(db.createEvent, req);
     if (response) {
         response.then(function(data) {  

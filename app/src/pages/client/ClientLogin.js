@@ -17,12 +17,16 @@ const ClientLogin = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        let headers={
-            'Content-Type': 'application/json',
-        };
+        // update database
         axios.post(`http://localhost:5000/enter-event/${name}/${email}/${code}`)
-            .then(res => console.log(res.data));
+            .then(function(res) {
+                console.log(res.data);
+                window.location = `/ClientView/${res.data}`;
+            });
         
+        // open client view
+        
+
     }
 
     return (

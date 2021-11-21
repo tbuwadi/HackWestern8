@@ -69,4 +69,24 @@ async function getSlides(req, res, next) {
 }
 
 
+// route to get email content
+router.get('/get-email-content/:_id', getEmailContent, async (req, res) => {
+    res.send(res.locals.emailContent);
+});
+async function getEmailContent(req, res, next) {
+    if (!req.params._id) {
+        req.params._id = "6199244fc8af6bc5ec2ff583";
+    }
+    const response = db.performCRUD(db.getSlides, req);
+    if (response) {
+        response.then(function(data) {
+            res.locals.slides = data;
+            next();
+        });
+    }
+    else {
+        res.send('Could not get slides');
+    }
+}
+
 module.exports = router;

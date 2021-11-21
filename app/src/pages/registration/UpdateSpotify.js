@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './update.css';
 
 const UpdateSpotify = () => {
+    const urlComponents = (new URL(document.location)).pathname.split('/');
+    const id = urlComponents[urlComponents.length - 1];
+
     const [value, setValue] = useState('');
 
-    useEffect(() => {
-        console.log('whatever is in this block is called whenever value changes')
-        // CALL API TO RETREIEVE CURRENT MSG VALUE FROM DB;
-        // newValue = api respnse;
-        // setValue(newValue);
-    }, []);
+    // useeffect causes get and post requests to api to not sync up will
+    // useEffect(() => {
+    //     console.log('whatever is in this block is called whenever value changes')
+    //     axios.get(`http://localhost:5000/get-playlist/${id}`)
+    //         .then(res => setValue(res.data.url));
+    // }, []);
 
 
     const onChangeValue = (e) => { setValue(e.target.value) }
@@ -17,7 +21,8 @@ const UpdateSpotify = () => {
 
     const onFormSubmit = (e) => {
         e.preventDefault();
-
+        axios.post(`http://localhost:5000/update-playlist/${id}/${value}`)
+            .then(res => console.log(res.data));
         // update new value to db
 
     }
