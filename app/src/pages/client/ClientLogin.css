@@ -1,4 +1,4 @@
-input {
+.form-box input {
     background: rgba(255,255,255, 0.6);
     text-align: center;
     border: none;
@@ -13,12 +13,12 @@ input {
     color: #a6a6a6;
 }
 
-label {
+.form-box label {
     font-size: larger;
     color: #4d4d4d;
 }
 
-button {
+.form-box button {
     font-size: larger;
     color: #4d4d4d;
     border: none;

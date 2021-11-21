@@ -4,14 +4,37 @@ const path = require('path');
 const app = express();
 
 const cors = require('cors');
+app.use(cors());
 
 // get announcement routes
-const announcementRoutes = require('./routes/announcements');
-app.use(announcementRoutes); 
+const getAnnouncementsRoute = require('./routes/get_announcements');
+app.use(getAnnouncementsRoute); 
 
-// get post_event routes
-const postEventRoutes = require('./routes/post_event');
-app.use(postEventRoutes);
+const postAnnouncementRoute = require('./routes/post_announcement');
+app.use(postAnnouncementRoute); 
+
+// get after_event routes
+const afterEventRoutes = require('./routes/after_event');
+app.use(afterEventRoutes);
+
+// get create_event routes
+const createEventRoutes = require('./routes/create_event');
+app.use(createEventRoutes);
+
+// get read event routes
+const readEvent = require('./routes/read_event');
+app.use(readEvent);
+
+// get update_event routes
+const updateEvent = require('./routes/update_event');
+app.use(updateEvent);
+
+// get delete event resources routes
+const deleteResources = require('./routes/delete_resources');
+app.use(deleteResources);
+
+// static images are available at /static/img1.b600c14a.png, etc
+app.use('/static', express.static(path.join(__dirname, 'wits-bg')));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
