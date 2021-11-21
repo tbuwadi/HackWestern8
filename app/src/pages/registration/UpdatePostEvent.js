@@ -33,7 +33,7 @@ const UpdatePostEvent = () => {
     const onSendEmail =(e) => {
         e.preventDefault();
         axios.get('http://localhost:5000/send-emails')
-            .then(res => console.log(res.data));
+            .then(setValue(''));
     }
 
     return (

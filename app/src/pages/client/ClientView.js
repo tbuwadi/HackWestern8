@@ -70,7 +70,7 @@ const ClientView = () => {
           <img alt="1" width='200px' src={Logo}/>
         </Col>
       </Row>
-      <View speaker={speakers} qna={qna} zoom={zoombg}/>
+      <View speaker={speakerss} qna={qna} zoom={zoombg}/>
     </Container>
   );
 }

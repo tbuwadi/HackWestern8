@@ -23,7 +23,7 @@ const UpdateSlide = () => {
         
         // update database
         axios.post(`http://localhost:5000/update-slides/${id}/${value}`)
-            .then(res => console.log(res.data));
+            .then(setValue(''));
     }
 
     return (
