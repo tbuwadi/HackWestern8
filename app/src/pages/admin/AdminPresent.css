@@ -5,10 +5,14 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 .tabBtn{
-    background-color: #BFE5D7;
-    border-radius: 30px;
-    margin: 10px;
-    font-weight: bold;
+    font-size: medium;
+    color: #4d4d4d;
+    border: none;
+    width: Auto;
+    height: 30px;
+    border-radius: 10px;
+    margin-right: 5px;
+    background-color: rgba(191,229,215);
 }
 .spotify{
     float: right;
