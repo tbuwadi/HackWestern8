@@ -17,13 +17,6 @@ const ClientLogin = () => {
     const onFormSubmit = (e) => {
         e.preventDefault();
 
-        const newAttendee = {
-            name: name,
-            email: email,
-            _id: code
-        };
-        console.log(newAttendee);
-
         let headers={
             'Content-Type': 'application/json',
         };
