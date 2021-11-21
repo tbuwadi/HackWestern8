@@ -10,7 +10,7 @@ import UpdateSpeaker from './pages/registration/UpdateSpeaker';
 
 
 // testing apps
-import Notification from './components/Notification';
+//import Notification from './components/Notification';
 
  
 class App extends Component {

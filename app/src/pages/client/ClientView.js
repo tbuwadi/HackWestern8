@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import View from '../../components/View';
 
 import '../../index.css';
-import { Container, Row, Col } from 'react-grid-system';
+import { Container} from 'react-grid-system';
 
 const ClientView = () => {
   
@@ -32,10 +32,10 @@ const ClientView = () => {
     }
   ];
 
-  const [title, setTitle] = useState('Loading...');
-  const [qa, setQa] = useState('https://app.sli.do/event/1yidejwe'); // TODO: Change default value
-  const [zoombg, setZoombg] = useState(zoombgg); // TODO: Change default value
-  const [speakers, setSpeakers] = useState(speakerss); // TODO: Change default value
+  const [title] = useState('Loading...');
+  const [qa] = useState('https://app.sli.do/event/1yidejwe'); // TODO: Change default value
+  const [zoombg] = useState(zoombgg); // TODO: Change default value
+  const [speakers] = useState(speakerss); // TODO: Change default value
   
   useEffect(() => { 
     console.log('BACKEND INETGRATION HERE')

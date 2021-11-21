@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './update.css';
 
 const UpdateZoom = () => {
-    const [value, setValue] = useState([]);
+    // const [value, setValue] = useState([]);
     const [url, setUrl] = useState('');
 
     useEffect(() => {

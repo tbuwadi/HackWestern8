@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Carousel } from '3d-react-carousal';
-import { Container, Row, Col } from 'react-grid-system';
+import { Row, Col } from 'react-grid-system';
 import Announcements from "../components/AdminSlides/Announcements"
 
 import './View.css';
 import Person1 from '../images/speaker1.png';
 import Person2 from '../images/speaker2.png';
-import Person3 from '../images/speaker3.png';
+//import Person3 from '../images/speaker3.png';
 import Person4 from '../images/speaker4.png';
 
 
@@ -14,7 +14,7 @@ const View = (props) => {
     const { qna, speaker, zoom } = props;
     const [state, setState] = useState('zoom');
     
-    const zoomImage = zoom.map(item => { return <img  src={item} /> });
+    const zoomImage = zoom.map(item => { return <img alt="" src={item} /> });
 
     const onQnAClick = (e) => { setState('qna') }
     const onSpeakerClick = (e) => { setState('speaker') }
@@ -39,9 +39,9 @@ const View = (props) => {
                     <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px', borderRadius: '15px'}} title="Slido"></iframe>
                 : state === 'speaker' ?
                     <div  style={{ marginTop: '40px'}}>
-                        <img width='400px' style={{ marginBottom: '15px'}} src={Person1}/><br/>
-                        <img width='400px' style={{ marginBottom: '15px'}} src={Person2}/><br/>
-                        <img width='400px' style={{ marginBottom: '50px'}} src={Person4}/><br/>
+                        <img alt="" width='400px' style={{ marginBottom: '15px'}} src={Person1}/><br/>
+                        <img alt="" width='400px' style={{ marginBottom: '15px'}} src={Person2}/><br/>
+                        <img alt="" width='400px' style={{ marginBottom: '50px'}} src={Person4}/><br/>
 
                         {speaker !== [] ?
                         <div>

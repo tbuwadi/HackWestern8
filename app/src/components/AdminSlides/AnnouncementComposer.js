@@ -23,7 +23,7 @@ export default class AnnouncementComposer extends Component {
   // in this component state
   handleCompose = event => {
     let typedValue = event.target.value;
-    if (typedValue != "" && typedValue != " ") {
+    if (typedValue !== "" && typedValue !== " ") {
       // store new single message temporarily
       this.setState({
         new: event.target.value

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './update.css';
 
 const UpdateSpeaker = () => {
-    const [value, setValue] = useState([]);
+    const [value] = useState([]);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [bio, setBio] = useState('');
