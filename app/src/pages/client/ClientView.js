@@ -20,21 +20,21 @@ const ClientView = () => {
     {
       "firstName": "John",
       "lastName": "Smith",
-      "bio": "swe @ hiremeanywhere"
+      "bio": "SWE @ IBM"
     },
     {
       "firstName": "Bob",
       "lastName": "Smith",
-      "bio": "@John's brother"
+      "bio": "Design @ Shopify"
     },
     {
       "firstName": "Jim",
       "lastName": "Tim",
-      "bio": "@John's cousin"
+      "bio": "PM @ Google"
     }
   ];
 
-  const [title, setTitle] = useState('Loading...');
+  const [title, setTitle] = useState('Resume Revamp');
   const [qna, setQna] = useState('https://app.sli.do/event/1yidejwe'); // TODO: Change default value
   const [zoombg, setZoombg] = useState(zoombgg); // TODO: Change default value
   const [speakers, setSpeakers] = useState(speakerss); // TODO: Change default value

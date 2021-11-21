@@ -41,7 +41,7 @@ async function sendEmail(req, res, next) {
         console.log(attendeesList);
         for (let i = 0; i < attendeesList.length; i++) {
             const attendee = attendeesList[i];
-            const message = getMessage(attendee, 'Thank you for coming to HackWestern8!');
+            const message = getMessage(attendee, 'Thank you for coming to our Resume Revamp event!');
             const response = await sendGridMail.send(message);
             emails_sent.push(attendee.email);
         }
