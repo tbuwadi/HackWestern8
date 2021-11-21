@@ -23,14 +23,16 @@ const UpdateQna = () => {
     }
 
     return (
-        <div className='single-update'>
+        <div className='single-update' style={{display: 'grid'}}>
             <form onSubmit={onFormSubmit}>
                 <h5 style={{ fontWeight: 'bold' }}>Modify Q&A Link</h5>
-                <label for="message">Q&A Link</label> <br /><br/>
-                <input name="message" type="text" value={value} onChange={onChangeValue} />
-                <br/>
-                <br/>
-                <button type='submit'>Edit</button>
+                <div className='layer1'>
+                    <label for="message">Q&A Link</label> <br /><br/>
+                    <input name="message" type="text" value={value} onChange={onChangeValue} />
+                </div>
+                <div className='layer1'>
+                    <button type='submit'>Edit</button>
+                </div>
             </form>
         </div>
     )
