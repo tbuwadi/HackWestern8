@@ -140,7 +140,7 @@ async function getSlides(req){
 // delete speaker from database
 async function deleteSpeaker(req){
     const speaker = req.params.speaker;
-    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(speaker._id }, { $pull: { speakers: { firstName: speaker.firstName } } } );
+    const result = await client.db(db_name).collection(collection).findOneAndUpdate( { _id: ObjectID(speaker._id ) }, { $pull: { speakers: { firstName: speaker.firstName } } } );
     if (result.value) {
         console.log(`${speaker.firstName} removed from event`);
     } else {
