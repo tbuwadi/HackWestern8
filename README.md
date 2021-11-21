@@ -1,4 +1,7 @@
 ﻿# HackWestern8
+
+## 🤩 PLEASE CHECK OUT OUR TECH DEMO (different from demo video)! 
+https://drive.google.com/file/d/1c_XGoqwbMdeX1HgR-qO9FQRSfVnyyhMD/view?usp=sharing
  
 ## Inspiration
 Ever been a panelist at a virtual event speaking into the dark abyss of cameras off?
