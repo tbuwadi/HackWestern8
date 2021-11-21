@@ -26,7 +26,7 @@ const UpdateSpotify = () => {
         <div className='single-update'>
             <form onSubmit={onFormSubmit}>
                 <h5 style={{ fontWeight: 'bold' }}>Modify Spotify Link</h5>
-                <label for="message">Spotify Link</label> <br />
+                <label for="message">Spotify Link</label> <br /><br/>
                 <input name="message" type="text" value={value} onChange={onChangeValue} />
                 <br/>
                 <br/>

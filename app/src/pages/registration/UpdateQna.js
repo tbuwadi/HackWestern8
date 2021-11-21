@@ -26,7 +26,7 @@ const UpdateQna = () => {
         <div className='single-update'>
             <form onSubmit={onFormSubmit}>
                 <h5 style={{ fontWeight: 'bold' }}>Modify Q&A Link</h5>
-                <label for="message">Q&A Link</label> <br />
+                <label for="message">Q&A Link</label> <br /><br/>
                 <input name="message" type="text" value={value} onChange={onChangeValue} />
                 <br/>
                 <br/>
