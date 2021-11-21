@@ -4,6 +4,11 @@ import { Container, Row, Col } from 'react-grid-system';
 import Announcements from "../components/AdminSlides/Announcements"
 
 import './View.css';
+import Person1 from '../images/speaker1.png';
+import Person2 from '../images/speaker2.png';
+import Person3 from '../images/speaker3.png';
+import Person4 from '../images/speaker4.png';
+
 
 const View = (props) => {
     const { qna, speaker, zoom } = props;
@@ -33,18 +38,30 @@ const View = (props) => {
                 { state === 'qna' ? 
                     <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px', borderRadius: '15px'}} title="Slido"></iframe>
                 : state === 'speaker' ?
-                    speaker !== [] ?
-                        speaker.map(item => {
-                            return (
-                                <div>
-                                    <h5 style={{ fontWeight: 'bold' }}>{item.firstName} {item.lastName}</h5>
-                                    <p>{item.bio}</p>
-                                </div>
-                            )
-                        })
-                    : null
+                    <div  style={{ marginTop: '40px'}}>
+                        <img width='400px' style={{ marginBottom: '15px'}} src={Person1}/><br/>
+                        <img width='400px' style={{ marginBottom: '15px'}} src={Person2}/><br/>
+                        <img width='400px' style={{ marginBottom: '50px'}} src={Person4}/><br/>
+
+                        {speaker !== [] ?
+                        <div>
+                            <h3>Other speakers</h3>
+                            <br />
+                            {speaker.map(item => {
+                                return (
+                                    <div style={{ paddingLeft: '40px'}}>
+                                        <h5 style={{ fontWeight: 'bold' }}>{item.firstName} {item.lastName}</h5>
+                                        <p>{item.bio}</p>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        : null}
+                    </div>
                 : state === 'zoom' ?
-                    <Carousel slides={ zoomImage } autoplay={ false }/>
+                    <div style={{ marginTop: '45px'}}>
+                        <Carousel slides={ zoomImage } autoplay={ false }/>
+                    </div>
                 : null }
                 </Col>
                 <Col sm={4}>
