@@ -35,6 +35,7 @@ router.get('/send-emails', sendEmail, async (req, res, next) => {
 });
 
 async function sendEmail(req, res, next) {
+    console.log("Sending emails...");
     try {
         let emails_sent = [];
         const attendeesList = await getAttendees(req, res);

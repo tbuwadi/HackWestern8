@@ -29,6 +29,13 @@ const UpdatePostEvent = () => {
 
     }
 
+    
+    const onSendEmail =(e) => {
+        e.preventDefault();
+        axios.get('http://localhost:5000/send-emails')
+            .then(res => console.log(res.data));
+    }
+
     return (
         <div className='single-update' style={{display: 'grid'}}>
             <form onSubmit={onFormSubmit}>
@@ -39,6 +46,9 @@ const UpdatePostEvent = () => {
                 </div>
                 <div className='layer1'>
                     <button type='submit'>Edit</button>
+                </div>
+                <div className='layer1'>
+                    <button onClick={onSendEmail}>Send Email</button>
                 </div>
 
             </form>
