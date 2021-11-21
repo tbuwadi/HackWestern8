@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import View from '../../components/View';
 
 import '../../index.css';
+import { Container, Row, Col } from 'react-grid-system';
 
 const ClientView = () => {
   
@@ -44,11 +45,11 @@ const ClientView = () => {
   }, []);
 
   return (
-    <div className='container' style={{ marginTop: '50px' }}>
+    <Container>
       <h1>{title}</h1>
       <br></br>
       <View speaker={speakers} qna={qa} zoom={zoombg}/>
-    </div>
+    </Container>
   );
 }
 

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Carousel } from '3d-react-carousal';
+import { Container, Row, Col } from 'react-grid-system';
+import Announcements from "../components/AdminSlides/Announcements"
+
 import './View.css';
 
 const View = (props) => {
@@ -13,14 +16,20 @@ const View = (props) => {
     const onZoomClick = (e) => { setState('zoom') }
 
     return (
-        <div className='view-component'>
-            <div>
+        <div className="view-component">
+            <Row>
+                <Col>
+                <div>
                 <button onClick={onQnAClick}>Q & A</button>
                 <button onClick={onSpeakerClick}>Speakers</button>
                 <button onClick={onZoomClick}>Zoom backgrounds</button>
             </div>
-            <br></br>
-            <div>
+                </Col>
+
+            </Row>
+
+            <Row>
+                <Col sm={8}>
                 { state === 'qna' ? 
                     <iframe src={qna} height="100%" width="100%" frameBorder="0" style={{ minHeight: '560px', borderRadius: '15px'}} title="Slido"></iframe>
                 : state === 'speaker' ?
@@ -37,8 +46,13 @@ const View = (props) => {
                 : state === 'zoom' ?
                     <Carousel slides={ zoomImage } autoplay={ false }/>
                 : null }
-            </div>
+                </Col>
+                <Col sm={4}>
+                 <Announcements userType="client"/>
+                </Col>
+            </Row>
 
+      
         </div>
     )
 }

@@ -30,12 +30,12 @@ export default class Announcements extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div style={{textAlign: "center"}} className="App">
         <h3>Announcements</h3>
         {/* send stored messages as props to chat window */}
         <AnnouncementsWindow messagesList={this.state.messages} />
         {/* send submitted props to chat composer */}
-        <AnnouncementsComposer submitted={this.submitted} />
+        {this.props.userType==="admin"?(<AnnouncementsComposer submitted={this.submitted} />):(<></>)}
       </div>
     );
   }
